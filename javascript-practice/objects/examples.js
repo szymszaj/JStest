@@ -7,19 +7,14 @@ let person = {
   },
 };
 
-const newUser = {
-  namm: "Joe",
-  age: 21,
-  car: {
-    brand: " Audi",
-    model: "q5",
-    color: "red",
-  },
-};
+const dogName = "Drops";
+const dogAge = 6;
+const hobby = "gnaw wood";
 
-const oldUser = {
-  namm: "Anna",
-  age: 44,
-  
+const dog = {
+  // name: dogName,
+  // age: dogAge,
+  dogName,
+  dogAge,
+  hobby,
 };
-console.log(`${newUser.namm} chodzi do domu ${oldUser.namm} i ma ${newUser.age} lat `);
