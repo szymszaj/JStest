@@ -43,3 +43,13 @@ class User {
 const firstUser = new User("Lily", 32, "boss");
 
 firstUser.hello();
+
+let people = {
+  name: "Szymon",
+  lastName: "Gawel",
+  age: 55,
+  hobby: "playing guitar",
+  fullName: function () {
+    return this.name + "" + this.lastName;
+  },
+};
