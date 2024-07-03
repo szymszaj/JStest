@@ -1,32 +1,30 @@
-class IoTDevice {
-  constructor(deviceName, deviceType, location) {
+class IoTDeivce {
+  constructor(deviceName, dviceType, location) {
     this.deviceName = deviceName;
-    this.deviceType = deviceType;
+    this.deviceType = dviceType;
     this.location = location;
     this.status = "offline";
-    this.batteryLevel = 100;
+    this.battertLevel = 100;
   }
 
   powerOn() {
     this.status = "online";
-    console.log(`${this.deviceName} is now ${this.status}.`);
+    console.log(`${this.deviceName} is now ${this.status}`);
   }
 
   powerOff() {
     this.status = "offline";
-    console.log(`${this.deviceName} is now ${this.status}.`);
+    console.log(`${this.deviceName} is now ${this.status}`);
   }
 
   checkStatus() {
-    console.log(`${this.deviceName} is currently ${this.status}.`);
+    console.log(`${this.deviceName} is currently ${this.status}`);
   }
 
   useBattery() {
     if (this.batteryLevel > 0) {
       this.batteryLevel -= 10;
-      console.log(
-        `${this.deviceName} battery level is now ${this.batteryLevel}%.`
-      );
+      console.log(`${this.deviceName} is now at ${this.batteryLevel}%`);
     } else {
       console.log(`${this.deviceName} has no battery left. Please recharge.`);
       this.powerOff();
@@ -46,8 +44,7 @@ class IoTDevice {
     console.log(`Battery Level: ${this.batteryLevel}%`);
   }
 }
-
-const smartLight = new IoTDevice("Smart Light", "Lighting", "Living Room");
+const smartLight = new IoTDeivce("Smart Light", "Lighting", "Living Room");
 
 smartLight.displayDetails();
 smartLight.powerOn();
