@@ -25,3 +25,18 @@ console.log(squaredNumbers);
 
 let evenNumbers = numbers.filter((num) => num % 2 === 0);
 console.log(evenNumbers);
+
+let sum = numbers.reduce(
+  (accumulator, currentValue) => accumulator + currentValue,
+  0
+);
+console.log(sum);
+
+let people = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 35 },
+];
+
+let totalAge = people.reduce((total, person) => total + person.age, 0);
+console.log(totalAge);
