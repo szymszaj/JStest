@@ -6,3 +6,7 @@ const addition = (a, b) => a + b;
 const person = { name: "Alice", age: 22 };
 const { name, age } = person;
 console.log("Name: " + name + ", Age: " + age);
+
+const name1 = "Jone";
+const greeting = `Hello ${name1}!`;
+console.log(greeting);
