@@ -40,3 +40,14 @@ let people = [
 
 let totalAge = people.reduce((total, person) => total + person.age, 0);
 console.log(totalAge);
+let names = people.map((person) => person.name);
+console.log(names);
+
+let ages = people.map((person) => person.age);
+console.log(ages);
+
+let filteredPeople = people.filter((person) => person.age > 30);
+console.log(filteredPeople);
+
+let sortedPeople = people.sort((a, b) => a.age - b.age);
+console.log(sortedPeople);
