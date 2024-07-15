@@ -9,3 +9,7 @@ const introduce = (name = "Szymon", age = 30, hobby = "programming") => {
 };
 
 console.log(introduce("Szymon", 30, "programming"));
+
+const develop = (language = "JavaScript", framework = "React") => {
+  return `I develop web applications using ${language} with ${framework}.`;
+};
