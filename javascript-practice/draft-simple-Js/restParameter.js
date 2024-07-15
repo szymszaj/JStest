@@ -4,3 +4,8 @@ const sum = (...numbers) => {
   }, 0);
 };
 console.log(sum(1, 2, 3));
+
+const concatenateStrings = (...strings) => {
+  return strings.reduce((acc, str) => acc + str, "");
+};
+console.log(concatenateStrings("Hello", " ", "world", "!"));
