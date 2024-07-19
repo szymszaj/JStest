@@ -51,3 +51,5 @@ console.log(filteredPeople);
 
 let sortedPeople = people.sort((a, b) => a.age - b.age);
 console.log(sortedPeople);
+let pets = ["Dog", "Cat", "Rabbit"];
+pets.forEach((pet) => console.log(pet));
