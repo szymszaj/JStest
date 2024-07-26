@@ -33,3 +33,13 @@ function isActiveAndAdult(user) {
 const activeAdults = users.filter(isActiveAndAdult);
 
 console.log(activeAdults);
+
+const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20];
+
+function isEvenAndMultipleOfTwo(number) {
+  return number % 2 === 0 && number % 2 === 0;
+}
+
+const evenMultiplesOfTwo = numbers.filter(isEvenAndMultipleOfTwo);
+
+console.log(evenMultiplesOfTwo);
