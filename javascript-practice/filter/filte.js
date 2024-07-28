@@ -27,3 +27,12 @@ function isActiveOrder(order) {
 const activeOrders = orders.filter(isActiveOrder);
 
 console.log(activeOrders);
+
+const emails = [
+  "user1@example.com",
+  "user2@example.op",
+  "user3@example.com",
+  "user4@example.pl",
+];
+const exampleEmails = emails.filter((email) => /example.com$/.test(email));
+console.log(exampleEmails);
