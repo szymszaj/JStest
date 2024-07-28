@@ -42,6 +42,3 @@ function guessPassword(targetPassword) {
     console.log("Failed to guess the password within the maximum attempts.");
   }
 }
-
-const targetPassword = "aBcD3fGhIjK!9L";
-guessPassword(targetPassword);
