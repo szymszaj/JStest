@@ -16,3 +16,23 @@ sales.forEach((sale) => {
 });
 
 console.log("Suma sprzedaży według kategorii:", categoryTotals);
+
+const products = [
+  { category: "Books", quantity: 10 },
+  { category: "Electronics", quantity: 5 },
+  { category: "Books", quantity: 7 },
+  { category: "Furniture", quantity: 3 },
+  { category: "Electronics", quantity: 8 },
+  { category: "Furniture", quantity: 4 },
+];
+
+const quantityTotals = {};
+
+products.forEach((product) => {
+  if (!quantityTotals[product.category]) {
+    quantityTotals[product.category] = 0;
+  }
+  quantityTotals[product.category] += product.quantity;
+});
+
+console.log("Suma ilości według kategorii:", quantityTotals);
