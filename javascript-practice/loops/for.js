@@ -44,3 +44,24 @@ for (const { title, read } of books) {
 }
 
 console.log("Tytuły przeczytanych książek:", readBooksTitles);
+const books1 = [
+  { title: "Book 1", author: "Author 1", read: true },
+  { title: "Book 2", author: "Author 2", read: false },
+  { title: "Book 3", author: "Author 3", read: true },
+];
+
+for (let i = 0; i < books.length; i++) {
+  if (!books[i].read) continue;
+  console.log(
+    `Przeczytana książka: "${books[i].title}" autorstwa ${books[i].author}`
+  );
+}
+
+const readBooksTitles1 = [];
+for (let i = 0; i < books.length; i++) {
+  if (books[i].read) {
+    readBooksTitles.push(books[i].title);
+  }
+}
+
+console.log("Tytuły przeczytanych książek:", readBooksTitles);
