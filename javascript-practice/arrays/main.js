@@ -17,3 +17,8 @@ const myArray = [
 const integers = myArray.filter(
   (item) => typeof item === "number" && Number.isInteger(item)
 );
+console.log(integers);
+
+myArray.forEach((item, index) => {
+  console.log(`Element at index ${index}:`, item);
+});
