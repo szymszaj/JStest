@@ -19,3 +19,8 @@ const car = new Map([
 ]);
 car.set("Ferrari", "Italy");
 car.forEach((country, brand) => console.log(`${brand} is from ${country}`));
+
+const meals = new Set(["breakfast", "lunch", "dinner", "breakfast"]);
+meals.add("supper");
+meals.delete("lunch");
+meals.forEach((meal) => console.log(meal));
