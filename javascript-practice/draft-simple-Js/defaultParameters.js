@@ -13,3 +13,10 @@ console.log(introduce("Szymon", 30, "programming"));
 const develop = (language = "JavaScript", framework = "React") => {
   return `I develop web applications using ${language} with ${framework}.`;
 };
+
+const myHobbies = (
+  hobbies = ["programming", "reading", "playing guitar", "survival"]
+) => {
+  return `My hobbies are ${hobbies.join(", ")}.`;
+};
+console.log(myHobbies());
