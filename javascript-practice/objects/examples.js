@@ -44,12 +44,14 @@ const firstUser = new User("Lily", 32, "boss");
 
 firstUser.hello();
 
-let people = {
-  name: "Szymon",
-  lastName: "Gawel",
-  age: 55,
-  hobby: "playing guitar",
-  fullName: function () {
-    return this.name + "" + this.lastName;
-  },
-};
+class Person {
+  constructor(name, age, job) {
+    this.name = name;
+    this.age = age;
+    this.job = job;
+  }
+  showName() {
+    console.log(this.name);
+  }
+}
+const person1 = new Person("Simon", 33, "developer");
