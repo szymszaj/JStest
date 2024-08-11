@@ -45,3 +45,31 @@ console.log("Modified Array:", modifiedArray);
 modifiedArray.forEach((item, index) => {
   console.log(`Element at index ${index}:`, item);
 });
+
+const myArray1 = [5, 15, 25, 35, 45, 1050, "hello", true, null];
+
+console.log(integers);
+
+myArray.forEach((item, index) => {
+  console.log(`Element at index ${index}:`, item);
+});
+
+function modifyIntegers(array) {
+  return array.map((item) => {
+    if (typeof item === "number" && Number.isInteger(item)) {
+      if (item < 20) {
+        return item * 2;
+      } else if (item > 1000) {
+        return 1000;
+      }
+    }
+    return item;
+  });
+}
+const modifiedArray1 = modifyIntegers(myArray);
+
+console.log("Modified Array:", modifiedArray1);
+
+modifiedArray1.forEach((item, index) => {
+  console.log(`Element at index ${index}:`, item);
+});
