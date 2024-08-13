@@ -53,3 +53,25 @@ let sortedPeople = people.sort((a, b) => a.age - b.age);
 console.log(sortedPeople);
 let pets = ["Dog", "Cat", "Rabbit"];
 pets.forEach((pet) => console.log(pet));
+
+//reduce
+const transactions = [
+  { type: "income", amount: 1000 },
+  { type: "expense", amount: 300 },
+  { type: "ioncome", amount: 100 },
+  { type: "expense", amount: 150 },
+  { type: "income", amount: 600 },
+];
+
+const summary = transactions.reduce(
+  (acc, transaction) => {
+    if (transaction.type === "income") {
+      acc.income += transaction.amount;
+    } else if (transaction.type === "expense") {
+      acc.expense += transaction.amount;
+    }
+    return acc;
+  },
+  { income: 0, expense: 0 }
+);
+console.log("TRANSACTION SUMMARY:", summary);
