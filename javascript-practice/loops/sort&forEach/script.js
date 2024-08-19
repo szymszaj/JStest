@@ -2,13 +2,13 @@ const hotelsPoland = [
   { city: "Warsaw", price: 350 },
   { city: "Krakow", price: 300 },
   { city: "Gdansk", price: 250 },
-  { city: "Wroclaw", price: 400 },
+  { city: "Wroclaw", price: 4300 },
   { city: "Poznan", price: 3220 },
-  { city: "Sopot", price: 500 },
+  { city: "Sopot", price: 5100 },
 ];
 
 const hotelsGermany = [
-  { city: "Berlin", price: 50 },
+  { city: "Berlin", price: 1050 },
   { city: "Munich", price: 1200 },
   { city: "Hamburg", price: 3480 },
   { city: "Frankfurt", price: 370 },
@@ -17,10 +17,10 @@ const hotelsGermany = [
 
 const hotelsFrance = [
   { city: "Paris", price: 550 },
-  { city: "Nice", price: 480 },
+  { city: "Nice", price: 4180 },
   { city: "Lyon", price: 420 },
   { city: "Marseille", price: 4020 },
-  { city: "Bordeaux", price: 380 },
+  { city: "Bordeaux", price: 3180 },
 ];
 
 const allHotels = [...hotelsPoland, ...hotelsGermany, ...hotelsFrance];
