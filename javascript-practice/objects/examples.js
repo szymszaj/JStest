@@ -80,14 +80,14 @@ class User {
   }
 }
 
-const person1 = new Person("Simon", 33, "developer");
+const me = new Person("Simon", 33, "developer");
 
 const user1 = new User("Lily", 32, "boss");
 
 const combinedObject = {
-  ...person1,
+  ...me,
   ...user1,
-  showName: person1.showName,
+  showName: me.showName,
   hello: user1.hello,
 };
 
