@@ -24,3 +24,11 @@ const meals = new Set(["breakfast", "lunch", "dinner", "breakfast"]);
 meals.add("supper");
 meals.delete("lunch");
 meals.forEach((meal) => console.log(meal));
+
+const towns = new Set(["Warsaw", "Berlin", "Paris", "Warsaw"]);
+towns.add("London");
+
+towns.forEach((town) => console.log(town));
+
+const drinks = new Set(["water", "juice", "tea", "coffee"]);
+drinks.forEach((drink) => console.log(drink));
