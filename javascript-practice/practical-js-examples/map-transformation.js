@@ -12,3 +12,16 @@ const userNames = exampleUser.map((user) => ({
   userJob: user.job || "No job",
 }));
 console.log(userNames);
+
+const User = [
+  { salary: 1000, name: "Alice" },
+  { salary: 2000, name: "Bob" },
+  { salary: 3000, name: "Charlie" },
+  { salary: 4000, name: "David" },
+  { salary: 5000, name: "Eve" },
+];
+const userSalary = User.map((user) => ({
+  userName: user.name,
+  userSalary: user.salary,
+}));
+console.log(userSalary);
