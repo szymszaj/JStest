@@ -12,4 +12,17 @@ for (let i = 0; i < nestedArrays.length; i++) {
     totalSum += nestedArrays[i][j];
   }
 }
-console.log(totalSum);
+
+console.log("Total sum:", totalSum);
+
+let dividedByFour = totalSum / 4;
+console.log("Divided by 4:", dividedByFour);
+
+let addedValue = 0;
+if (dividedByFour % 2 !== 0) {
+  addedValue = 2 - (dividedByFour % 2);
+  dividedByFour += addedValue;
+}
+
+console.log("Final result:", dividedByFour);
+console.log("Added value to make it even:", addedValue);
