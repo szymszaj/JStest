@@ -3,7 +3,6 @@ const nestedArrays = [
   [4, 5, 6],
   [7, 8, 9],
   [10, 11, 12],
-  [99, 33, 88],
 ];
 let totalSum = 0;
 
@@ -32,6 +31,9 @@ const books = [
   { title: "The Da Vinci Code", author: "Dan Brown", year: 2003 },
   { title: "The Road", author: "Cormac McCarthy", year: 2006 },
   { title: "The Hunger Games", author: "Suzanne Collins", year: 2008 },
+  { title: "The Help", author: "Kathryn Stockett", year: 2009 },
+  { title: "The Fault in Our Stars", author: "John Green", year: 2012 },
+  { title: "The Nightingale", author: "Kristin Hannah", year: 2015 },
 ];
 
 const booksAfter2000 = books.filter((book) => book.year > 2000);
