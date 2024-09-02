@@ -81,3 +81,16 @@ console.log("\nKarty Nvidia posortowane według ceny:");
 nvidiaGPUs.forEach((gpu) => {
   console.log(`${gpu.name} - $${gpu.price}`);
 });
+
+const amdLED = amdGPUs.filter((gpu) => gpu.led);
+const nvidiaLED = nvidiaGPUs.filter((gpu) => gpu.led);
+
+console.log("Karty AMD z LED posortowane według ceny:");
+amdLED.forEach((gpu) => {
+  console.log(`${gpu.name} - $${gpu.price}`);
+});
+
+console.log("\nKarty Nvidia z LED posortowane według ceny:");
+nvidiaLED.forEach((gpu) => {
+  console.log(`${gpu.name} - $${gpu.price}`);
+});
