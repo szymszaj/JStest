@@ -6,14 +6,24 @@ const UserAccount = {
     this.age = age;
     this.location = location;
   },
+
   changePassword(oldPassword, newPassword) {
     if (oldPassword === this.password) {
-      this.password === newPassword;
+      this.password = newPassword;
       console.log("Password has been successfully changed.");
     } else {
       console.log("Incorrect old password.");
     }
   },
-};
 
-//Method to update the email
+  updateEmail(newEmail) {
+    this.email = newEmail;
+    console.log("Email has been successfully updated.");
+  },
+
+  displayProfile() {
+    console.log(`Username: ${this.username}`);
+    console.log(`Email: ${this.email}`);
+    console.log(`Age: ${this.age}`);
+  },
+};
