@@ -27,3 +27,12 @@ const UserAccount = {
     console.log(`Age: ${this.age}`);
   },
 };
+
+const user1 = new UserAccount("Simon", "simon@example.pl", 12345, 23, "Poland");
+user1.displayProfile();
+
+user1.changePassword("12345", "newpassword123");
+
+user1.updateEmail("john.new@example.com");
+
+user1.displayProfile();
