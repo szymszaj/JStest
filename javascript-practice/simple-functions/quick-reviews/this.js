@@ -1,6 +1,7 @@
 let user = {
   name: "Szymon",
   age: 22,
+  hobbies: ["reading", "gaming", "coding"],
   sayHello: function () {
     alert(this.name);
   },
@@ -10,19 +11,20 @@ let user = {
   displayInfo: function () {
     console.log(`Name: ${this.name}, Age: ${this.age}`);
   },
+  listHobbies: function () {
+    this.hobbies.forEach((hobby) => {
+      console.log(`${this.name} enjoys ${hobby}`);
+    });
+  },
+  delayedGreeting: function () {
+    setTimeout(() => {
+      alert(`Hello, ${this.name}`);
+    }, 1000);
+  },
 };
 
 user.sayHello();
 user.updateAge(23);
 user.displayInfo();
-
-user.delayedGreeting = function () {
-  setTimeout(
-    function () {
-      alert(`Hello, ${this.name}`);
-    }.bind(this),
-    1000
-  );
-};
-
+user.listHobbies();
 user.delayedGreeting();
