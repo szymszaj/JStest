@@ -82,3 +82,6 @@ let car = {
     );
   },
 };
+car.drive(500);
+car.repaint("black");
+car.displayInfo();
