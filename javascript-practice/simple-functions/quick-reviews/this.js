@@ -28,3 +28,31 @@ user.updateAge(23);
 user.displayInfo();
 user.listHobbies();
 user.delayedGreeting();
+
+let book = {
+  title: "The Great Gatsby",
+  author: "F. Scott Fitzgerald",
+  year: 1925,
+  genres: ["Novel", "Historical", "Drama"],
+
+  getSummary: function () {
+    return `${this.title} by ${this.author}, published in ${this.year}.`;
+  },
+
+  isClassic: function () {
+    let currentYear = new Date().getFullYear();
+    return currentYear - this.year > 50
+      ? "Yes, it's a classic."
+      : "No, it's not that old.";
+  },
+
+  listGenres: function () {
+    this.genres.forEach((genre) => {
+      console.log(`${this.title} belongs to ${genre} genre.`);
+    });
+  },
+};
+
+console.log(book.getSummary());
+console.log(book.isClassic());
+book.listGenres();
