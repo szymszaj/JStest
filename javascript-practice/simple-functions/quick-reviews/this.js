@@ -56,3 +56,29 @@ let book = {
 console.log(book.getSummary());
 console.log(book.isClassic());
 book.listGenres();
+
+let car = {
+  make: "Tesla",
+  model: "Model S",
+  year: 2020,
+  color: "red",
+  mileage: 15000,
+
+  drive: function (distance) {
+    this.mileage += distance;
+    console.log(
+      `You drove ${distance} km. Total mileage is now ${this.mileage} km.`
+    );
+  },
+
+  repaint: function (newColor) {
+    this.color = newColor;
+    console.log(`The car has been repainted to ${this.color}.`);
+  },
+
+  displayInfo: function () {
+    console.log(
+      `Car: ${this.make} ${this.model}, Year: ${this.year}, Color: ${this.color}, Mileage: ${this.mileage} km.`
+    );
+  },
+};
