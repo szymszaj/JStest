@@ -5,9 +5,18 @@ function sumSalaries(salaries) {
   }
   return sum;
 }
+
+function averageSalary(salaries) {
+  let totalSalaries = Object.values(salaries).length;
+  if (totalSalaries === 0) return 0;
+  return sumSalaries(salaries) / totalSalaries;
+}
+
 let salaries = {
   Boho: 100,
   Anna: 160,
   Pete: 130,
 };
-alert(sumSalaries(salaries));
+
+alert(`Total Salaries: ${sumSalaries(salaries)}`);
+alert(`Average Salary: ${averageSalary(salaries)}`);
