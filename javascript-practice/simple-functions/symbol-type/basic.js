@@ -25,3 +25,10 @@ let person = {
 console.log(person[uniqueId]);
 
 let uniqueId2 = Symbol("uniqueId");
+let book = {
+  title: "JavaScript: The Good Parts",
+  author: "Douglas Crockford",
+  [uniqueId2]: "ISBN-123-456",
+};
+
+console.log(book[uniqueId2]);
