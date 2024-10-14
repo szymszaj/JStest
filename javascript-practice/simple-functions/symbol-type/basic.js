@@ -13,3 +13,15 @@ let game = {
   [id2]: "pass",
 };
 console.log(game[id2]);
+
+let uniqueId = Symbol("uniqueId");
+
+let person = {
+  firstName: "Alice",
+  lastName: "Smith",
+  [uniqueId]: 67890,
+};
+
+console.log(person[uniqueId]);
+
+let uniqueId2 = Symbol("uniqueId");
