@@ -68,3 +68,4 @@ const smartThermostat = new SmartHomeDevice(
 smartThermostat.displayDetails();
 smartThermostat.useBattery();
 smartThermostat.powerOn();
+smartThermostat.useBattery();
