@@ -58,3 +58,13 @@ class SmartHomeDevice {
     );
   }
 }
+
+const smartThermostat = new SmartHomeDevice(
+  "Smart Thermostat",
+  "Climate Control",
+  "Living Room"
+);
+
+smartThermostat.displayDetails();
+smartThermostat.useBattery();
+smartThermostat.powerOn();
