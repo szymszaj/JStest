@@ -1,4 +1,10 @@
 class SmartHomeDevice {
+  /**
+   * Create a smart home device.
+   * @param {string} deviceName - The name of the device.
+   * @param {string} deviceType - The type of the device.
+   * @param {string} location - The location of the device.
+   */
   constructor(deviceName, deviceType, location) {
     this.deviceName = deviceName;
     this.deviceType = deviceType;
