@@ -13,3 +13,8 @@ const additionWithPi = addPiToResults(additionResults);
 const subtractionWithPi = addPiToResults(subtractionResults);
 const multiplicationWithPi = addPiToResults(multiplicationResults);
 const divisionWithPi = addPiToResults(divisionResults);
+
+console.log("Addition results with pi:", additionWithPi);
+console.log("Subtraction results with pi:", subtractionWithPi);
+console.log("Multiplication results with pi:", multiplicationWithPi);
+console.log("Division results with pi:", divisionWithPi);
