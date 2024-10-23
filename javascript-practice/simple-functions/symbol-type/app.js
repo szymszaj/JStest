@@ -1,5 +1,5 @@
-const sym1 = Symbol("uniqueIdentifier");
-const sym2 = Symbol("uniqueIdentifier");
+const sym1 = Symbol("uniqueIdentifier1");
+const sym2 = Symbol("uniqueIdentifier2");
 
 console.log(sym1 === sym2);
 
@@ -22,3 +22,22 @@ const symbols = Object.getOwnPropertySymbols(user);
 console.log(symbols);
 console.log(user[symbols[0]]);
 console.log(user[symbols[1]]);
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this[sym1] = "Private Info";
+  }
+
+  getPrivateInfo() {
+    return this[sym1];
+  }
+}
+
+const person = new Person("Alice", 30);
+console.log(person.name);
+console.log(person.age);
+console.log(person.getPrivateInfo());
+
+console.log(person[sym1]);
