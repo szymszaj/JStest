@@ -41,3 +41,29 @@ console.log(person.age);
 console.log(person.getPrivateInfo());
 
 console.log(person[sym1]);
+
+const symMethod1 = Symbol("method1");
+const symMethod2 = Symbol("method2");
+
+class Calculator {
+  constructor() {
+    this[symMethod1] = function (a, b) {
+      return a + b;
+    };
+    this[symMethod2] = function (a, b) {
+      return a * b;
+    };
+  }
+
+  executeMethod1(a, b) {
+    return this[symMethod1](a, b);
+  }
+
+  executeMethod2(a, b) {
+    return this[symMethod2](a, b);
+  }
+}
+
+const calculator = new Calculator();
+console.log(calculator.executeMethod1(2, 3));
+console.log(calculator.executeMethod2(2, 3));
