@@ -13,6 +13,7 @@ function Car(make, model, year) {
     console.log(`Car: ${this.year} ${this.make} ${this.model}`);
   };
 }
+
 const myCar = new Car("Ford", "Focus", 2020);
 myCar.displayInfo();
 
@@ -25,8 +26,9 @@ class Animal {
   displayInfo() {
     console.log(`Animal: ${this.name} ${this.species}`);
   }
-  static compare(animall1, animal2) {
-    return animall1.species === animal2.species;
+
+  static compare(animal1, animal2) {
+    return animal1.species === animal2.species;
   }
 }
 
@@ -40,16 +42,18 @@ console.log(Animal.compare(dog, cat));
 
 const name = {
   name: "Szymus",
-  greet: () => {
+  greet: function () {
     console.log(`Hello, my name is ${this.name}`);
   },
 };
-class dinner{
-  constructor(sushi,aperol){
+
+class Dinner {
+  constructor(sushi, aperol) {
     this.sushi = sushi;
     this.aperol = aperol;
   }
-  displayInfo(){
+
+  displayInfo() {
     console.log(`Dinner: ${this.sushi} and my drink is ${this.aperol}`);
   }
 }
