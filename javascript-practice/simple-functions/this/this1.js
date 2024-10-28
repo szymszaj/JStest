@@ -37,3 +37,19 @@ dog.displayInfo();
 cat.displayInfo();
 
 console.log(Animal.compare(dog, cat));
+
+const name = {
+  name: "Szymus",
+  greet: () => {
+    console.log(`Hello, my name is ${this.name}`);
+  },
+};
+class dinner{
+  constructor(sushi,aperol){
+    this.sushi = sushi;
+    this.aperol = aperol;
+  }
+  displayInfo(){
+    console.log(`Dinner: ${this.sushi} and my drink is ${this.aperol}`);
+  }
+}
