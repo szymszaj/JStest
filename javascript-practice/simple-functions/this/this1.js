@@ -40,13 +40,6 @@ cat.displayInfo();
 
 console.log(Animal.compare(dog, cat));
 
-const name = {
-  name: "Szymus",
-  greet: function () {
-    console.log(`Hello, my name is ${this.name}`);
-  },
-};
-
 class Dinner {
   constructor(sushi, aperol) {
     this.sushi = sushi;
