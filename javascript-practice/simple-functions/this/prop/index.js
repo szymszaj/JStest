@@ -27,3 +27,9 @@ class Server {
     }
   }
 }
+
+const server1 = new Server("Server1", "192.168.0.1");
+
+server1.setProps({ location: "Data Center A", port: 8080 });
+
+console.log(server1);
