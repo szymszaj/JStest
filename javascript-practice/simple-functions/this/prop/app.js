@@ -27,7 +27,7 @@ const cat = new Animal("Fluffy", "cat");
 dog.displayInfo();
 cat.displayInfo();
 
-// console.log(Animal.compare(dog, cat));
+console.log(Animal.compare(dog, cat));
 
-// dog.setProps({ age: 5, color: "brown" });
-// console.log(dog);
+dog.setProps({ age: 5, color: "brown" });
+console.log(dog);
