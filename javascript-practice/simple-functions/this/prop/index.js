@@ -28,8 +28,23 @@ class Server {
   }
 }
 
-const server1 = new Server("Server1", "192.168.0.1");
+// const server1 = new Server("Server1", "192.168.0.1");
 
-server1.setProps({ location: "Data Center A", port: 8080 });
+// server1.setProps({ location: "Data Center A", port: 8080 });
 
-console.log(server1);
+// console.log(server1);
+
+const server2 = new Server("Server2", "10.0.0.2");
+
+server2.setProps({
+  location: "Data Center B",
+  port: 443,
+  config: {
+    maxConnections: 1000,
+    timeout: 300,
+    SSL: true,
+  },
+  maintenanceSchedule: ["2024-01-15", "2024-07-20"],
+});
+
+console.log(server2);
