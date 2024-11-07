@@ -2,7 +2,7 @@ class Server {
   constructor(name, ip) {
     this.name = name;
     this.ip = ip;
-    this.status = "offline"; // offline, online
+    this.status = "offline";
   }
 
   start() {
@@ -28,11 +28,11 @@ class Server {
   }
 }
 
-// const server1 = new Server("Server1", "192.168.0.1");
+const server1 = new Server("Server1", "192.168.0.1");
 
-// server1.setProps({ location: "Data Center A", port: 8080 });
+server1.setProps({ location: "Data Center A", port: 8080 });
 
-// console.log(server1);
+console.log(server1);
 
 const server2 = new Server("Server2", "10.0.0.2");
 
