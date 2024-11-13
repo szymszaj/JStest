@@ -1,0 +1,2 @@
+Log z dnia: 2024-11-13
+- Wpis: tworzyłem nowy komponent 
