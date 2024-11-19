@@ -1,34 +1,26 @@
 function maximumSubarraySum(nums, k) {
   let maxSum = 0;
   let currentSum = 0;
-  const set = new Set();
+  const map = new Map();
 
   for (let i = 0; i < nums.length; i++) {
     currentSum += nums[i];
-    set.add(nums[i]);
-
-    console.log(`Iteracja ${i}:`);
-    console.log(`  Dodano element ${nums[i]}`);
-    console.log(`  Bieżąca suma: ${currentSum}`);
-    console.log(`  Unikalne elementy: ${Array.from(set)}`);
+    map.set(nums[i], (map.get(nums[i]) || 0) + 1);
 
     if (i >= k) {
       currentSum -= nums[i - k];
-      set.delete(nums[i - k]);
-      console.log(`  Usunięto element ${nums[i - k]}`);
-      console.log(`  Suma po usunięciu: ${currentSum}`);
-      console.log(`  Unikalne elementy po usunięciu: ${Array.from(set)}`);
+      if (map.get(nums[i - k]) === 1) {
+        map.delete(nums[i - k]);
+      } else {
+        map.set(nums[i - k], map.get(nums[i - k]) - 1);
+      }
     }
 
-    if (set.size === k) {
+    if (map.size === k) {
       maxSum = Math.max(maxSum, currentSum);
-      console.log(
-        `  Znaleziono podtablicę o długości ${k} z sumą ${currentSum}`
-      );
     }
   }
 
-  console.log(`Maksymalna suma: ${maxSum}`);
   return maxSum;
 }
 
