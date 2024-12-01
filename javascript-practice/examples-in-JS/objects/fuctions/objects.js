@@ -1,4 +1,4 @@
-function getDog(nane, breed, age, weight) {
+function getDog(name, breed, age, weight) {
   return {
     name,
     breed,
