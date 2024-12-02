@@ -28,3 +28,18 @@ function Dog(name, breed, age, weight) {
 const anotherDog = new Dog("Buddy", "Golden Retriever", 5, 30);
 
 console.log(anotherDog);
+
+function getPerson(firstName, lastName, age) {
+  return {
+    firstName,
+    lastName,
+    age,
+    greet() {
+      console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);
+    },
+    thisYear() {
+      return new Date().getFullYear() - this.age;
+    }
+  };
+}
+const person = getPerson("John", "Doe", 30);
