@@ -19,4 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
+  const settings = {
+    maxLength: 20,
+    placeholder: "Type here...",
+  };
 
+  inputElement.setAttribute("placeholder", settings.placeholder);
+
+  inputElement.addEventListener("input", (event) =>
+    handleOnChange(event, props, settings)
+  );
+});
