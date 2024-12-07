@@ -29,17 +29,24 @@ const anotherDog = new Dog("Buddy", "Golden Retriever", 5, 30);
 
 console.log(anotherDog);
 
-function getPerson(firstName, lastName, age) {
-  return {
-    firstName,
-    lastName,
-    age,
-    greet() {
-      console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);
-    },
-    thisYear() {
-      return new Date().getFullYear() - this.age;
-    }
-  };
-}
-const person = getPerson("John", "Doe", 30);
+const twoSumSolver = {
+  findPairs(nums, target) {
+    const map = new Map();
+    const result = [];
+
+    nums.forEach((num, i) => {
+      const complement = target - num;
+      if (map.has(complement)) {
+        result.push([map.get(complement), i]);
+      }
+      map.set(num, i);
+    });
+
+    return result;
+  },
+};
+
+const nums = [2, 7, 11, 15, 7, 2];
+const target = 9;
+
+console.log(twoSumSolver.findPairs(nums, target));
