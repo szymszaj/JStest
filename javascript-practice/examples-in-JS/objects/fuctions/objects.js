@@ -50,3 +50,13 @@ const nums = [2, 7, 11, 15, 7, 2];
 const target = 9;
 
 console.log(twoSumSolver.findPairs(nums, target));
+
+
+const library = {
+  books: [
+    { title: "The Great Gatsby", author: "F. Scott Fitzgerald", available: true },
+    { title: "1984", author: "George Orwell", available: false },
+    { title: "To Kill a Mockingbird", author: "Harper Lee", available: true },
+    { title: "The Catcher in the Rye", author: "J.D. Salinger", available: true },
+    { title: "Moby-Dick", author: "Herman Melville", available: false },
+  ],
