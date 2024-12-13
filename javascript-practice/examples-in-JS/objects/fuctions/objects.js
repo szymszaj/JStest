@@ -101,7 +101,6 @@ const library = {
     }
   },
 };
-// Przykładowe użycie
 library.listAvailableBooks();
 library.borrowBook("1984");
 library.borrowBook("The Great Gatsby");
