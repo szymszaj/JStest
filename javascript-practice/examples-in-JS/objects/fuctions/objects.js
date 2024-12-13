@@ -1,17 +1,3 @@
-function getDog(name, breed, age, weight) {
-  return {
-    name,
-    breed,
-    age,
-    weight,
-    eat() {
-      console.log(this.name + ": Chomp");
-    },
-    bark() {
-      console.log(this.name + ": Woof");
-    },
-  };
-}
 function Dog(name, breed, age, weight) {
   this.name = name;
   this.breed = breed;
@@ -24,10 +10,6 @@ function Dog(name, breed, age, weight) {
     console.log(this.name + ": Woof");
   };
 }
-
-const anotherDog = new Dog("Buddy", "Golden Retriever", 5, 30);
-
-console.log(anotherDog);
 
 const twoSumSolver = {
   findPairs(nums, target) {
@@ -45,11 +27,6 @@ const twoSumSolver = {
     return result;
   },
 };
-
-const nums = [2, 7, 11, 15, 7, 2];
-const target = 9;
-
-console.log(twoSumSolver.findPairs(nums, target));
 
 const library = {
   books: [
@@ -101,9 +78,3 @@ const library = {
     }
   },
 };
-library.listAvailableBooks();
-library.borrowBook("1984");
-library.borrowBook("The Great Gatsby");
-library.listAvailableBooks();
-library.returnBook("The Great Gatsby");
-library.listAvailableBooks();
