@@ -16,3 +16,6 @@ Log entry for: 2024-11-30
 Log entry for: 2024-12-07
 - Entry: The future belongs to those who believe in the beauty of their dreams.
 
+Log entry for: 2024-12-17
+- Entry: I was making components at work
+
