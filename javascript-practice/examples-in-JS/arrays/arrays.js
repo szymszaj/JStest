@@ -1,4 +1,3 @@
-const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-const squaerdNumbers = number.map((num) => num * num);
-console.log(first);
+const characters = ["Homer", "Marge", "Bart", "Lisa", "Maggie"];
+const upperCaseCharacters = characters.map((char) => char.toUpperCase());
+console.log(upperCaseCharacters)
