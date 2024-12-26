@@ -1,75 +1,79 @@
-const myArray = [
-  10,
-  3.14,
-  "hello",
-  false,
-  null,
-  undefined,
-  { key: "value" },
-  [4, 5, 6],
-  function () {
+const myArray = {
+  item1: 10,
+  item2: 3.14,
+  item3: "hello",
+  item4: false,
+  item5: null,
+  item6: undefined,
+  item7: { key: "value" },
+  item8: [4, 5, 6],
+  item9: function () {
     console.log("This is a function in the array!");
   },
-  new Date("2023-01-01"),
-  42,
-  1500,
-  "world",
-];
+  item10: new Date("2023-01-01"),
+  item11: 42,
+  item12: 1500,
+  item13: "world",
+};
 
-const integers = myArray.filter(
+const integers = Object.values(myArray).filter(
   (item) => typeof item === "number" && Number.isInteger(item)
 );
 
 console.log(integers);
 
-myArray.forEach((item, index) => {
-  console.log(`Element at index ${index}:`, item);
+Object.entries(myArray).forEach(([key, item]) => {
+  console.log(`Element at key ${key}:`, item);
 });
 
-function modifyIntegers(array) {
-  return array.map((item) => {
+function modifyIntegers(obj) {
+  const newObj = {};
+  for (const [key, item] of Object.entries(obj)) {
     if (typeof item === "number" && Number.isInteger(item)) {
       if (item < 20) {
-        return item * 2;
+        newObj[key] = item * 2;
       } else if (item > 1000) {
-        return 1000;
+        newObj[key] = 1000;
+      } else {
+        newObj[key] = item;
       }
+    } else {
+      newObj[key] = item;
     }
-    return item;
-  });
+  }
+  return newObj;
 }
+
 const modifiedArray = modifyIntegers(myArray);
 
 console.log("Modified Array:", modifiedArray);
 
-modifiedArray.forEach((item, index) => {
-  console.log(`Element at index ${index}:`, item);
+Object.entries(modifiedArray).forEach(([key, item]) => {
+  console.log(`Element at key ${key}:`, item);
 });
 
-const myArray1 = [5, 15, 25, 35, 45, 1050, "hello", true, null];
+const myArray1 = {
+  item1: 5,
+  item2: 15,
+  item3: 25,
+  item4: 35,
+  item5: 45,
+  item6: 1050,
+  item7: "hello",
+  item8: true,
+  item9: null,
+};
 
 console.log(integers);
 
-myArray.forEach((item, index) => {
-  console.log(`Element at index ${index}:`, item);
+Object.entries(myArray1).forEach(([key, item]) => {
+  console.log(`Element at key ${key}:`, item);
 });
 
-function modifyIntegers(array) {
-  return array.map((item) => {
-    if (typeof item === "number" && Number.isInteger(item)) {
-      if (item < 20) {
-        return item * 2;
-      } else if (item > 1000) {
-        return 1000;
-      }
-    }
-    return item;
-  });
-}
-const modifiedArray1 = modifyIntegers(myArray);
+const modifiedArray1 = modifyIntegers(myArray1);
 
 console.log("Modified Array:", modifiedArray1);
 
-modifiedArray1.forEach((item, index) => {
-  console.log(`Element at index ${index}:`, item);
+Object.entries(modifiedArray1).forEach(([key, item]) => {
+  console.log(`Element at key ${key}:`, item);
 });
