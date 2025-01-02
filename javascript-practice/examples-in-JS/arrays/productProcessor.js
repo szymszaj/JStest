@@ -6,13 +6,23 @@ const products = [
   { name: "USB Cable", price: 10, quantity: 15 },
 ];
 
-const processedProducts = products
-  .filter((product) => product.price > 20)
-  .map((product) => ({
+const filterByPrice = (products, minPrice) =>
+  products.filter((product) => product.price > minPrice);
+
+const calculateProductValue = (products) =>
+  products.map((product) => ({
     name: product.name,
     value: product.price * product.quantity,
-  }))
-  .sort((a, b) => b.value - a.value)
-  .map((product) => `${product.name}: $${product.value}`);
+  }));
+
+const sortByValueDescending = (products) =>
+  products.sort((a, b) => b.value - a.value);
+
+const formatProducts = (products) =>
+  products.map((product) => `${product.name}: $${product.value}`);
+
+const processedProducts = formatProducts(
+  sortByValueDescending(calculateProductValue(filterByPrice(products, 20)))
+);
 
 console.log(processedProducts);
