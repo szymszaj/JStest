@@ -41,6 +41,10 @@ function groupUsersByJob(users) {
   }, {});
 }
 
+function updateUser(users, id, newData) {
+  return users.map((user) => (user.id === id ? { ...user, ...newData } : user));
+}
+
 const updatedUsers = updateUser(exampleUser, 55, {
   age: 26,
   job: "senior developer",
