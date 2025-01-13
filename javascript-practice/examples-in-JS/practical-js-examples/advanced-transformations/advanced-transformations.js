@@ -1,4 +1,55 @@
-import employeeData from "./data/employeeData.js";
+const employeeData = [
+  {
+    id: 1,
+    name: "Alice",
+    age: 25,
+    department: "IT",
+    salary: 5000,
+    skills: ["JavaScript", "React", "Node"],
+    yearsOfExperience: 3,
+    projects: ["Web App", "Mobile App"],
+  },
+  {
+    id: 2,
+    name: "Bob",
+    age: 30,
+    department: "HR",
+    salary: 4500,
+    skills: ["Recruitment", "Training"],
+    yearsOfExperience: 5,
+    projects: ["HR System"],
+  },
+  {
+    id: 3,
+    name: "Charlie",
+    age: 35,
+    department: "IT",
+    salary: 6000,
+    skills: ["Python", "Django", "AWS"],
+    yearsOfExperience: 7,
+    projects: ["Cloud Migration"],
+  },
+  {
+    id: 4,
+    name: "Diana",
+    age: 28,
+    department: "Marketing",
+    salary: 4000,
+    skills: ["Social Media", "Content Creation"],
+    yearsOfExperience: 4,
+    projects: ["Brand Campaign"],
+  },
+  {
+    id: 5,
+    name: "Eve",
+    age: 32,
+    department: "IT",
+    salary: 5500,
+    skills: ["Java", "Spring", "SQL"],
+    yearsOfExperience: 6,
+    projects: ["Database Migration"],
+  },
+];
 
 const getEmployeeStats = (employees) => {
   return employees.map((emp) => ({
@@ -74,3 +125,29 @@ const advancedSearch = (employees, criteria) => {
     });
   });
 };
+
+console.log("Employee Stats:");
+console.log(getEmployeeStats(employeeData));
+
+console.log("\nGrouped by Department and Experience Level:");
+console.log(
+  groupByMultipleCriteria(employeeData, ["department", "yearsOfExperience"])
+);
+
+console.log("\nDepartment Statistics:");
+console.log(getDepartmentStats(employeeData));
+
+console.log("\nAdvanced Search - IT employees with salary > 5000:");
+console.log(
+  advancedSearch(employeeData, {
+    department: "IT",
+    salary: { gt: 5000 },
+  })
+);
+
+console.log("\nAdvanced Search - Employees with JavaScript skills:");
+console.log(
+  advancedSearch(employeeData, {
+    skills: "JavaScript",
+  })
+);
