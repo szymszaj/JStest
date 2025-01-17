@@ -1,15 +1,11 @@
 function solution2(expenses) {
   let result = {};
 
-  // Iterujemy po miesiącach
   for (let month in expenses) {
     let dayExpenses = [];
 
-    // Iterujemy po dniach w miesiącu
     for (let day in expenses[month]) {
-      // Zbieramy dane tylko do pierwszej niedzieli (dni 1-7)
       if (parseInt(day) <= 7) {
-        // Zbieramy wszystkie wydatki dla tego dnia
         let categories = expenses[month][day];
         for (let category in categories) {
           dayExpenses = dayExpenses.concat(categories[category]);
@@ -17,7 +13,6 @@ function solution2(expenses) {
       }
     }
 
-    // Obliczamy medianę, jeśli są jakieś wydatki
     if (dayExpenses.length > 0) {
       result[month] = quickSelect(
         dayExpenses,
@@ -31,7 +26,6 @@ function solution2(expenses) {
   return result;
 }
 
-// Funkcja QuickSelect do znalezienia k-tego najmniejszego elementu w tablicy
 function quickSelect(arr, k) {
   function partition(arr, low, high) {
     let pivot = arr[high];
