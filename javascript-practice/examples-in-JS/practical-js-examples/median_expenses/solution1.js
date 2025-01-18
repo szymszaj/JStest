@@ -33,3 +33,35 @@ function median(arr) {
     return arr[mid];
   }
 }
+
+//Refactor
+const median = (arr) => {
+  const sorted = [...arr].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+
+  return sorted.length % 2 === 0
+    ? (sorted[mid - 1] + sorted[mid]) / 2
+    : sorted[mid];
+};
+
+function calculateMonthlyMedians(expenses) {
+  const monthlyExpenses = {};
+
+  expenses.forEach((expense) => {
+    const [year, month] = expense.date.split("-");
+    const monthKey = `${year}-${month}`;
+
+    if (!monthlyExpenses[monthKey]) {
+      monthlyExpenses[monthKey] = [];
+    }
+
+    monthlyExpenses[monthKey].push(expense.amount);
+  });
+
+  return Object.fromEntries(
+    Object.entries(monthlyExpenses).map(([month, expenses]) => [
+      month,
+      expenses.length > 0 ? median(expenses) : null,
+    ])
+  );
+}
