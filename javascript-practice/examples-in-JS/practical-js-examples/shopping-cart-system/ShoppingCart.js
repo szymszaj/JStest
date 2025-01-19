@@ -1,36 +1,39 @@
 class ShoppingCart {
   constructor() {
-    this.item = [];
-    this.discount = [];
+    this.items = [];
+    this.discounts = [];
   }
 
   addItem(item) {
-    const existingItem = this.item.find((i) => i.id === item.id);
+    const existingItem = this.items.find((i) => i.id === item.id);
     if (existingItem) {
       existingItem.quantity += item.quantity;
     } else {
-      this.item.push({ ...item, quantity: item.quantity || 1 });
+      this.items.push({ ...item, quantity: item.quantity || 1 });
     }
   }
 
-  removeItem(itemID) {
-    const index = this.item.findIndex((item) => item.id === itemID);
+  removeItem(itemId) {
+    const index = this.items.findIndex((item) => item.id === itemId);
     if (index > -1) {
-      this.item.splice(index, 1);
+      this.items.splice(index, 1);
       return true;
     }
     return false;
   }
+
   addDiscount(code, percentage) {
-    this.discount.push({ code, percentage });
+    this.discounts.push({ code, percentage });
   }
-  cakculateTotal() {
-    const subtotal = this.item.reduce((total, item) => {
+
+  calculateTotal() {
+    const subtotal = this.items.reduce((total, item) => {
       return total + item.price * item.quantity;
     }, 0);
+
     const maxDiscount = Math.max(
       0,
-      ...this.discount.map((discount) => discount.percentage)
+      ...this.discounts.map((discount) => discount.percentage)
     );
 
     const discount = subtotal * (maxDiscount / 100);
@@ -40,6 +43,7 @@ class ShoppingCart {
       total: subtotal - discount,
     };
   }
+
   getCartSummary() {
     const totals = this.calculateTotal();
     return {
