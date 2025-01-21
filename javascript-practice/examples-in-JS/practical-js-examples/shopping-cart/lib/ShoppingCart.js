@@ -13,15 +13,22 @@ export class ShoppingCart {
   }
 
   getCartSummary() {
-    const subtotal = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const discount = Array.from(this.discounts.values()).reduce((max, value) => Math.max(max, value), 0) / 100;
+    const subtotal = this.items.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+    const discount =
+      Array.from(this.discounts.values()).reduce(
+        (max, value) => Math.max(max, value),
+        0
+      ) / 100;
     const total = subtotal * (1 - discount);
 
     return {
       items: this.items,
       subtotal: subtotal.toFixed(2),
-      discount: (discount * 100) + '%',
-      total: total.toFixed(2)
+      discount: discount * 100 + "%",
+      total: total.toFixed(2),
     };
   }
 }

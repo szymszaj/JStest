@@ -1,4 +1,4 @@
-import { ShoppingCart } from './lib/ShoppingCart.js';
+import { ShoppingCart } from "./lib/ShoppingCart.js";
 
 const cart = new ShoppingCart();
 
