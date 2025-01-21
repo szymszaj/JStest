@@ -27,3 +27,11 @@ function firstCompleteIndex(arr, matMap) {
 
   return arr.length - 1;
 }
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const matMap = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
+
+console.log(firstCompleteIndex(arr, matMap));
