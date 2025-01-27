@@ -3,6 +3,7 @@ const path = require("path");
 const chokidar = require("chokidar");
 
 const desktopPath = path.join(require("os").homedir(), "Desktop");
+const documentsPath = path.join(require("os").homedir(), "Documents");
 
 const getUSBPath = () => {
   const drives = fs.readdirSync("/media/");
@@ -33,7 +34,10 @@ const startMonitoring = () => {
     const usbPath = getUSBPath();
     if (usbPath) {
       console.log(`USB drive detected: ${usbPath}`);
+      console.log("Copying files from Desktop...");
       copyFiles(desktopPath, usbPath);
+      console.log("Copying files from Documents...");
+      copyFiles(documentsPath, usbPath);
       console.log("Files copied successfully.");
       watcher.close();
     }
