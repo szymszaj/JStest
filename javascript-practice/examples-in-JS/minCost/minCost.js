@@ -61,3 +61,10 @@ function addInQ(queue, visited, row, col, cost) {
     return;
   queue.push([row, col, cost]);
 }
+
+const grid = [
+  [1, 1, 3],
+  [3, 2, 2],
+  [1, 1, 4],
+];
+console.log(minCost(grid));
