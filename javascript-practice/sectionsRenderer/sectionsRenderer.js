@@ -5,22 +5,22 @@ const splitSections = (sections) => {
   return { firstSection, restSections };
 };
 
-const renderSection = ({ title, links }) => {
-  return `
-    <div class="section">
-      <h2 onclick="toggleLinks('${title}')">${title}</h2>
-      <ul id="${title.replace(/\s+/g, "")}" class="links-list">
-        ${links
-          .map(
-            (link) => `
-          <li><a href="${link.href}" target="_blank">${link.text}</a></li>
-        `
-          )
-          .join("")}
-      </ul>
-    </div>
-  `;
-};
+const generateLinkHTML = (link) => `
+  <li><a href="${link.href}" target="_blank">${link.text}</a></li>
+`;
+
+const generateLinksListHTML = (links, title) => `
+  <ul id="${title.replace(/\s+/g, "")}" class="links-list">
+    ${links.map(generateLinkHTML).join("")}
+  </ul>
+`;
+
+const renderSection = ({ title, links }) => `
+  <div class="section">
+    <h2 onclick="toggleLinks('${title}')">${title}</h2>
+    ${generateLinksListHTML(links, title)}
+  </div>
+`;
 
 const renderSections = (sections) => {
   const { firstSection, restSections } = splitSections(sections);
