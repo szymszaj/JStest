@@ -19,3 +19,6 @@ function sortAndDisplayFruits(order) {
     console.log(`${fruit.name}: $${fruit.price}`);
   });
 }
+
+sortAndDisplayFruits("cheapest");
+sortAndDisplayFruits("most expensive");
