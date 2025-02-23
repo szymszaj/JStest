@@ -35,3 +35,22 @@ function sortAndDisplayFruits(order) {
     console.log(`${fruit.name}: $${fruit.price}`);
   });
 }
+
+const products = [
+  { name: "Laptop", price: 1000 },
+  { name: "Phone", price: 500 },
+  { name: "Tablet", price: 700 },
+  { name: "Monitor", price: 300 },
+];
+
+function filterAndSortProducts(products, minPrice) {
+  const filteredProducts = products.filter(
+    (product) => product.price >= minPrice
+  );
+
+  filteredProducts.sort((a, b) => a.price - b.price);
+
+  return filteredProducts;
+}
+
+console.log(filterAndSortProducts(products, 600));
