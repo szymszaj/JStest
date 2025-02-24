@@ -38,3 +38,41 @@ function filterAndSortProducts(products, minPrice) {
 }
 
 console.log(filterAndSortProducts(products, 600));
+
+const products1 = [
+  { name: "Laptop", price: 1000 },
+  { name: "Phone", price: 500 },
+  { name: "Tablet", price: 700 },
+  { name: "Monitor", price: 300 },
+  { name: "Mouse", price: 20 },
+  { name: "Keyboard", price: 50 },
+];
+
+function groupAndSortProducts1(products1) {
+  const groupedProducts1 = {
+    cheap: [],
+    moderate: [],
+    expensive: [],
+  };
+
+  products1.forEach((product) => {
+    if (product.price < 100) {
+      groupedProducts1.cheap.push(product);
+    } else if (product.price >= 100 && product.price <= 700) {
+      groupedProducts1.moderate.push(product);
+    } else {
+      groupedProducts1.expensive.push(product);
+    }
+  });
+
+  groupedProducts1.cheap.sort((a, b) => a.price - b.price);
+  groupedProducts1.moderate.sort((a, b) => a.price - b.price);
+  groupedProducts1.expensive.sort((a, b) => a.price - b.price);
+
+  return groupedProducts1;
+}
+
+const groupedAndSortedProducts1 = groupAndSortProducts1(products1);
+console.log("Cheap products1:", groupedAndSortedProducts1.cheap);
+console.log("Moderate products1:", groupedAndSortedProducts1.moderate);
+console.log("Expensive products1:", groupedAndSortedProducts1.expensive);
