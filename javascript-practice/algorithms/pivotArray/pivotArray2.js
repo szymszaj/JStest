@@ -9,9 +9,18 @@ function pivotArray(nums, pivot) {
     else greater.push(num);
   }
 
-  return [...less, ...equal, ...greater];
+  const result = [...less, ...equal, ...greater];
+  const counts = {
+    less: less.length,
+    equal: equal.length,
+    greater: greater.length,
+  };
+
+  return { result, counts };
 }
 
 const nums = [9, 12, 3, 5, 14, 10, 10];
 const pivot = 10;
-console.log(pivotArray(nums, pivot));
+const { result, counts } = pivotArray(nums, pivot);
+console.log("Pivoted Array:", result);
+console.log("Counts:", counts);
