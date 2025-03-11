@@ -42,7 +42,46 @@ class SubstrVowelKConsonant {
 
     return result;
   }
+
+  countVowelsAndConsonants(word) {
+    let vowels = 0;
+    let consonants = 0;
+
+    for (const char of word) {
+      if (SubstrVowelKConsonant.vowel.includes(char)) {
+        vowels++;
+      } else if (char.match(/[a-z]/i)) {
+        consonants++;
+      }
+    }
+
+    return { vowels, consonants };
+  }
+
+  longestSubstringWithAllVowels(word) {
+    let maxLength = 0;
+    let currentLength = 0;
+    let vowelSet = new Set();
+
+    for (const char of word) {
+      if (SubstrVowelKConsonant.vowel.includes(char)) {
+        vowelSet.add(char);
+        currentLength++;
+      } else {
+        vowelSet.clear();
+        currentLength = 0;
+      }
+
+      if (vowelSet.size === 5) {
+        maxLength = Math.max(maxLength, currentLength);
+      }
+    }
+
+    return maxLength;
+  }
 }
 
 const instance = new SubstrVowelKConsonant();
 console.log(instance.countOfSubstrings("yourwordhere", 2));
+console.log(instance.countVowelsAndConsonants("yourwordhere"));
+console.log(instance.longestSubstringWithAllVowels("yourwordhere"));
