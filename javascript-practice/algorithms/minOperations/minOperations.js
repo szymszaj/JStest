@@ -1,19 +1,22 @@
-function minOperations(nums) {
-  let n = nums.length;
+function minOperationsImmutable(nums) {
+  let arr = [...nums];
+  let n = arr.length;
+  if (n < 3) return arr.every((num) => num === 1) ? 0 : -1;
+
   let operations = 0;
 
   for (let i = 0; i < n - 2; i++) {
-    if (nums[i] === 0) {
-      nums[i] = 1;
-      nums[i + 1] = 1 - nums[i + 1];
-      nums[i + 2] = 1 - nums[i + 2];
+    if (arr[i] === 0) {
+      arr[i] = 1;
+      arr[i + 1] = 1 - arr[i + 1];
+      arr[i + 2] = 1 - arr[i + 2];
       operations++;
     }
   }
 
-  return nums[n - 1] === 1 && nums[n - 2] === 1 ? operations : -1;
+  return arr[n - 1] === 1 && arr[n - 2] === 1 ? operations : -1;
 }
 
-console.log(minOperations([0, 1, 0, 1, 0]));
-console.log(minOperations([1, 1, 1, 1]));
-console.log(minOperations([0, 0, 0]));
+let nums = [0, 1, 0, 1, 0];
+console.log(minOperationsImmutable(nums));
+console.log(nums);
