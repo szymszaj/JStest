@@ -44,3 +44,8 @@ const caclulator = {
 };
 
 console.log(callback.add(5).subtract(2).getValue());
+
+(function () {
+  const prywatnaZmienna = "Nie jestem dostępna na zewnątrz";
+  console.log("Ta funkcja wykonuje się natychmiast");
+})();
