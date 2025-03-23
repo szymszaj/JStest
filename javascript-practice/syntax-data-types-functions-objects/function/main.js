@@ -23,3 +23,24 @@ function sum(...numbers) {
 
 console.log(sum(1, 2, 3, 4, 5));
 
+function perFromoperation(a, b, callback) {
+  return callback(a, b);
+}
+const result = perFromoperation(2, 2, add);
+
+const caclulator = {
+  currentValue: 0,
+  add: function (x) {
+    this.currentValue += x;
+    return this;
+  },
+  subtract: function (x) {
+    this.currentValue -= x;
+    return this;
+  },
+  getValue: function () {
+    return this.currentValue;
+  },
+};
+
+console.log(callback.add(5).subtract(2).getValue());
