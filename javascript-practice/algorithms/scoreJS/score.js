@@ -1,78 +1,78 @@
-function maximumScore(nums, k) {
-  const n = nums.length;
-  const numArr = [...nums];
-  const maxNum = Math.max(...nums);
+function getMaxScore(arr, operations) {
+  const len = arr.length;
+  const values = [...arr];
+  const maxVal = Math.max(...arr);
 
-  const primeScores = primeScoresSieve(maxNum);
-  const left = new Array(n).fill(0);
-  const right = new Array(n).fill(0);
+  const primeCount = calculatePrimeScores(maxVal);
+  const leftBound = new Array(len).fill(0);
+  const rightBound = new Array(len).fill(0);
   const stack = [];
 
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < len; i++) {
     while (
       stack.length > 0 &&
-      primeScores[numArr[stack[stack.length - 1]]] < primeScores[numArr[i]]
+      primeCount[values[stack[stack.length - 1]]] < primeCount[values[i]]
     ) {
       stack.pop();
     }
-    left[i] = stack.length === 0 ? i + 1 : i - stack[stack.length - 1];
+    leftBound[i] = stack.length === 0 ? i + 1 : i - stack[stack.length - 1];
     stack.push(i);
   }
 
   stack.length = 0;
-  for (let i = n - 1; i >= 0; i--) {
+  for (let i = len - 1; i >= 0; i--) {
     while (
       stack.length > 0 &&
-      primeScores[numArr[stack[stack.length - 1]]] <= primeScores[numArr[i]]
+      primeCount[values[stack[stack.length - 1]]] <= primeCount[values[i]]
     ) {
       stack.pop();
     }
-    right[i] = stack.length === 0 ? n - i : stack[stack.length - 1] - i;
+    rightBound[i] = stack.length === 0 ? len - i : stack[stack.length - 1] - i;
     stack.push(i);
   }
 
-  const freq = new Array(n);
-  for (let i = 0; i < n; i++) {
-    freq[i] = left[i] * right[i];
+  const frequency = new Array(len);
+  for (let i = 0; i < len; i++) {
+    frequency[i] = leftBound[i] * rightBound[i];
   }
 
-  const sorted = numArr
-    .map((value, index) => ({ value, freq: freq[index] }))
-    .sort((a, b) => b.value - a.value);
+  const sortedArray = values
+    .map((num, idx) => ({ num, freq: frequency[idx] }))
+    .sort((a, b) => b.num - a.num);
 
-  let currentIndex = 0;
-  let maximumScore = 1;
-  const MOD = 1000000007;
+  let index = 0;
+  let score = 1;
+  const MODULO = 1000000007;
 
-  while (k > 0) {
-    const minFreq = Math.min(sorted[currentIndex].freq, k);
-    maximumScore =
-      (maximumScore * modPow(sorted[currentIndex].value, minFreq, MOD)) % MOD;
-    k -= minFreq;
-    currentIndex++;
+  while (operations > 0) {
+    const minCount = Math.min(sortedArray[index].freq, operations);
+    score =
+      (score * powerMod(sortedArray[index].num, minCount, MODULO)) % MODULO;
+    operations -= minCount;
+    index++;
   }
 
-  return maximumScore;
+  return score;
 }
 
-function primeScoresSieve(num) {
-  const primeScores = new Array(num + 1).fill(0);
-  for (let i = 2; i <= num; i++) {
-    if (primeScores[i] !== 0) continue;
-    for (let j = i; j <= num; j += i) {
-      primeScores[j]++;
+function calculatePrimeScores(limit) {
+  const primeCounts = new Array(limit + 1).fill(0);
+  for (let i = 2; i <= limit; i++) {
+    if (primeCounts[i] !== 0) continue;
+    for (let j = i; j <= limit; j += i) {
+      primeCounts[j]++;
     }
   }
-  return primeScores;
+  return primeCounts;
 }
 
-function modPow(value, exponent, modulus) {
+function powerMod(base, exp, mod) {
   let result = 1;
-  value %= modulus;
-  while (exponent > 0) {
-    if (exponent & 1) result = (result * value) % modulus;
-    value = (value * value) % modulus;
-    exponent >>= 1;
+  base %= mod;
+  while (exp > 0) {
+    if (exp & 1) result = (result * base) % mod;
+    base = (base * base) % mod;
+    exp >>= 1;
   }
   return result;
 }
