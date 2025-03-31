@@ -6,14 +6,14 @@ const arr = [1, 2, 3, 4, 5];
 const newArr = [...arr, 6, 7, 8];
 console.log(newArr);
 
-const exampleBin = {a,b} => a+b
-console.log(add(2,5))
+const exampleBin = (a, b) => a + b;
+console.log(add(2, 5));
 
-console.log(exampleBin)
+console.log(exampleBin);
 
 const fetchData = async () => {
-  const response = await fetch ("https://jsonplaceholder.typicode.com/posts");
-const data = await response.json();
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await response.json();
   console.log(data);
-} 
+};
 fetchData();
