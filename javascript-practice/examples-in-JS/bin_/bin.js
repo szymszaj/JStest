@@ -11,3 +11,9 @@ console.log(add(2,5))
 
 console.log(exampleBin)
 
+const fetchData = async () => {
+  const response = await fetch ("https://jsonplaceholder.typicode.com/posts");
+const data = await response.json();
+  console.log(data);
+} 
+fetchData();
