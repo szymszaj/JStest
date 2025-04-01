@@ -62,3 +62,14 @@ const highValueItems = shoppingCart.filter(
   (item) => item.price * item.quantity > 1000
 );
 console.log("High value items:", highValueItems);
+
+function isPrime(num) {
+  if (num < 2) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false;
+  }
+  return true;
+}
+
+const primeNumbers = numbers.filter(isPrime);
+console.log("Prime numbers:", primeNumbers);
