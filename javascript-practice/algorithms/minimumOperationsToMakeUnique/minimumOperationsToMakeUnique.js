@@ -30,4 +30,6 @@ function minimumOperationsToMakeUniqueAlt(nums) {
     map.set(num, (map.get(num) || 0) + 1);
     return map;
   }, new Map());
+
+  return [...frequency.values()].reduce((total, count) => total + count - 1, 0);
 }
