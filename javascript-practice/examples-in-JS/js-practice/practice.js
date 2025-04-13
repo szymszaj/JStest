@@ -2,17 +2,17 @@ function calculateSum(a, b) {
   return a + b;
 }
 
-console.log("suma 2  i3 to:", calculateSum(2, 3));
+console.log("The sum of 2 and 3 is:", calculateSum(2, 3));
 
 console.log("for");
 for (let i = 1; i <= 5; i++) {
   console.log(i);
 }
 
-const exoticFruis = ["banana", "mango", "kiwi"];
-console.log("Lista owoców");
-exoticFruis.forEach((fruit, index) => {
-  console.log(`Owoc ${index + 1}: ${fruit}`);
+const exoticFruits = ["banana", "mango", "kiwi"];
+console.log("List of fruits");
+exoticFruits.forEach((fruit, index) => {
+  console.log(`Fruit ${index + 1}: ${fruit}`);
 });
 
 const personInJob = {
@@ -20,19 +20,19 @@ const personInJob = {
   age: 30,
   job: "developer",
   greet: function () {
-    console.log(`Cześć, jestem ${this.name} i mam ${this.age} lat.`);
+    console.log(`Hi, I am ${this.name} and I am ${this.age} years old.`);
   },
 };
 
 personInJob.greet();
 
-function checNumber(num) {
+function checkNumber(num) {
   if (num > 0) {
-    console.log(`${num} jest liczbą dodatnią`);
+    console.log(`${num} is a positive number`);
   } else if (num < 0) {
-    console.log(`${num} jest liczbą ujemną`);
+    console.log(`${num} is a negative number`);
   } else {
-    console.log(`${num} jest zerem`);
+    console.log(`${num} is zero`);
   }
 }
 checkNumber(-5);
