@@ -38,3 +38,7 @@ function checkNumber(num) {
 checkNumber(-5);
 checkNumber(0);
 checkNumber(10);
+
+const multiplyNumbers = (x, y) => x * y;
+
+console.log("The product of 4 and 5 is:", multiplyNumbers(4, 5));
