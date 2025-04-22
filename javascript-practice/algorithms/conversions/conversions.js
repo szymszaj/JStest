@@ -71,3 +71,53 @@ function findUnitType(fromUnit, toUnit) {
   }
   return null;
 }
+
+function listAvailableConversions() {
+  let result = "Available conversions:\n";
+
+  for (const type in conversions) {
+    result += `\n${type.toUpperCase()}:\n`;
+    const units = Object.keys(conversions[type]);
+    result += `  Units: ${units.join(", ")}\n`;
+  }
+
+  return result;
+}
+
+function main() {
+  const args = process.argv.slice(2);
+
+  if (args.includes("--help") || args.includes("-h")) {
+    console.log(`
+Usage: node conversions.js <value> <fromUnit> <toUnit>
+
+Examples:
+  node conversions.js 100 celsius fahrenheit
+  node conversions.js 5.5 meter foot
+  node conversions.js 10 pound kilogram
+  
+Use --list to see all available conversions.
+    `);
+    return;
+  }
+
+  if (args.includes("--list") || args.includes("-l")) {
+    console.log(listAvailableConversions());
+    return;
+  }
+
+  if (args.length !== 3) {
+    console.error("Usage: node conversions.js <value> <fromUnit> <toUnit>");
+    console.error("Try --help for more information.");
+    process.exit(1);
+  }
+
+  const result = convert(args);
+  if (result) {
+    console.log(result);
+  } else {
+    process.exit(1);
+  }
+}
+
+main();
