@@ -26,7 +26,7 @@ async function translateText(text, sourceLang = "pl", targetLang = "en") {
 async function main() {
   console.clear();
   console.log(colors.blue + "╔════════════════════════════════════════════╗");
-  console.log("║           TŁUMACZ           ║");
+  console.log("║ TŁUMACZ ║");
   console.log("╚════════════════════════════════════════════╝" + colors.reset);
 
   console.log("\nWpisz tekst po polsku poniżej (PL):");
