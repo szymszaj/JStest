@@ -25,12 +25,9 @@ async function translateText(text, sourceLang = "pl", targetLang = "en") {
 
 async function main() {
   console.clear();
-  console.log(colors.blue + "╔════════════════════════════════════════════╗");
-  console.log("║ TŁUMACZ ║");
-  console.log("╚════════════════════════════════════════════╝" + colors.reset);
 
   console.log("\nWpisz tekst po polsku poniżej (PL):");
-  const inputText = readlineSync.question("PL: ");
+  const inputText = readlineSync.question(colors.blue + "PL: " + colors.reset);
 
   if (!inputText) {
     console.log("Nie podano tekstu. Wychodzenie...");
