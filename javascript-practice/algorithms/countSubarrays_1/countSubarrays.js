@@ -8,3 +8,6 @@ function countSubarrays(nums) {
   }
   return ans;
 }
+
+const nums = [1, 4, 1, 6, 1];
+console.log(countSubarrays(nums));
