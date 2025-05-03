@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat App</title>
+  </head>
+  <body>
+    <h1>Chat App</h1>
+    <form id="login-form">
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Hasło" required />
+      <button type="submit">Zaloguj</button>
+    </form>
+
+    <div id="chat">
+      <div id="messages"></div>
+      <form id="chat-form">
+        <input type="text" name="message" placeholder="Wiadomość" required />
+        <button type="submit">Wyślij</button>
+      </form>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
