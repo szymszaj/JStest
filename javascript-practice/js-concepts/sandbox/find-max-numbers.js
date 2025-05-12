@@ -34,3 +34,31 @@ function testFindMaxNumber() {
 }
 
 testFindMaxNumber();
+
+//SPREAD OPERATOR
+function findMaxNumbers1(numbers) {
+  if (numbers.length === 0) {
+    return null;
+  }
+  return Math.max(...numbers);
+}
+
+function testFindMaxNumber1() {
+  const testCases1 = [
+    [1, 2, 3, 4, 5],
+    [10, 20, 30, 5, 15],
+    [-10, -20, -30, -5, -15],
+    [],
+  ];
+
+  testCases1.forEach((testArray, index) => {
+    const result = findMaxNumbers1(testArray);
+    console.log(
+      `Test ${index + 1}: Największa liczba w tablicy [${testArray.join(
+        ", "
+      )}] to: ${result}`
+    );
+  });
+}
+
+testFindMaxNumber1();
