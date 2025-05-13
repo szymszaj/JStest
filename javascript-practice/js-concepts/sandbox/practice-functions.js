@@ -14,3 +14,18 @@ function testCalculateSum() {
 }
 
 testCalculateSum();
+
+//reduce
+
+function calculateSum(numbers) {
+  return numbers.reduce((sum, number) => sum + number, 0);
+}
+
+function testCalculateSum() {
+  const testArray = [1, 2, 3, 4, 5];
+  const result = calculateSum(testArray);
+
+  console.log(`Test: [${testArray.join(", ")}] wynosi: ${result}`);
+}
+
+testCalculateSum();
