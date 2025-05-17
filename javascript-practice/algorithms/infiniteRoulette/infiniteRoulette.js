@@ -7,7 +7,13 @@ function infiniteRoulette() {
   const interval = setInterval(() => {
     let randomNumber;
     do {
-      randomNumber = parseFloat((Math.random() * 99 + 1).toFixed(2));
+      const probability = Math.random();
+
+      if (probability < 0.75) {
+        randomNumber = parseFloat((Math.random() * 4 + 1).toFixed(2));
+      } else {
+        randomNumber = parseFloat((Math.random() * 95 + 5).toFixed(2));
+      }
     } while (usedNumbers.has(randomNumber));
 
     usedNumbers.add(randomNumber);
