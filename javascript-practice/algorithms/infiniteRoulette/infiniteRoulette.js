@@ -1,17 +1,22 @@
 function infiniteRoulette() {
   console.log("The roulette game has started!");
 
-  let currentNumber = 1;
   const stopNumber = Math.floor(Math.random() * 100) + 1;
+  const usedNumbers = new Set();
 
   const interval = setInterval(() => {
-    console.log("Drawn number:", currentNumber);
+    let randomNumber;
+    do {
+      randomNumber = parseFloat((Math.random() * 99 + 1).toFixed(2));
+    } while (usedNumbers.has(randomNumber));
 
-    if (currentNumber === stopNumber) {
-      console.log("The roulette stopped at number:", currentNumber);
+    usedNumbers.add(randomNumber);
+
+    console.log("Drawn number:", randomNumber);
+
+    if (usedNumbers.size >= stopNumber) {
+      console.log("The roulette stopped at number:", randomNumber);
       clearInterval(interval);
-    } else {
-      currentNumber++;
     }
   }, 100);
 }
