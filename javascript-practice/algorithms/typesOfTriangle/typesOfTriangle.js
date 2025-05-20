@@ -17,3 +17,8 @@ function typeOfTriangle(nums) {
 
   return "scalene";
 }
+
+console.log(typeOfTriangle([3, 3, 3]));
+console.log(typeOfTriangle([3, 4, 5]));
+console.log(typeOfTriangle([3, 3, 2]));
+console.log(typeOfTriangle([1, 2, 3]));
