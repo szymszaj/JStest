@@ -17,3 +17,10 @@ console.log("Aktywni użytkownicy:", activeUsers);
 
 const youngActiveUsers = users.filter((user) => user.age < 30 && user.active);
 console.log("Młodzi i aktywni użytkownicy:", youngActiveUsers);
+
+const searchName = (query) => {
+  return users.filter((user) =>
+    user.name.toLowerCase().includes(query.toLowerCase())
+  );
+};
+console.log('Wyszukiwanie "a":', searchName("a"));
