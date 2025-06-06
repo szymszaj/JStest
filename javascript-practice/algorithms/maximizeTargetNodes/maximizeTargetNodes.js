@@ -1,29 +1,10 @@
-function maximizeTargetNodes(edgesTree1, edgesTree2, k) {
-  const n = edgesTree1.length + 1;
-  const m = edgesTree2.length + 1;
-  const graph1 = Array.from({ length: n }, () => []);
-  const graph2 = Array.from({ length: m }, () => []);
-
-  for (const [a, b] of edgesTree1) {
-    graph1[a].push(b);
-    graph1[b].push(a);
+function buildGraph(edges, nodesCount) {
+  const graph = Array.from({ length: nodesCount }, () => []);
+  for (const [a, b] of edges) {
+    graph[a].push(b);
+    graph[b].push(a);
   }
-  for (const [a, b] of edgesTree2) {
-    graph2[a].push(b);
-    graph2[b].push(a);
-  }
-
-  let maxInGraph2 = 0;
-  for (let i = 0; i < m; i++) {
-    maxInGraph2 = Math.max(maxInGraph2, dfs(graph2, i, -1, k - 1));
-  }
-
-  const result = [];
-  for (let i = 0; i < n; i++) {
-    let count = maxInGraph2 + dfs(graph1, i, -1, k);
-    result.push(count);
-  }
-  return result;
+  return graph;
 }
 
 function dfs(graph, node, parent, k) {
@@ -31,16 +12,25 @@ function dfs(graph, node, parent, k) {
   if (k === 0) return 1;
   let res = 1;
   for (const neighbor of graph[node]) {
-    if (neighbor === parent) continue;
-    res += dfs(graph, neighbor, node, k - 1);
+    if (neighbor !== parent) {
+      res += dfs(graph, neighbor, node, k - 1);
+    }
   }
   return res;
 }
 
-const edges1 = [
-  [0, 1],
-  [1, 2],
-];
-const edges2 = [[0, 1]];
-const k = 2;
-console.log(maximizeTargetNodes(edges1, edges2, k));
+function maximizeTargetNodes(edgesTree1, edgesTree2, k) {
+  const n = edgesTree1.length + 1;
+  const m = edgesTree2.length + 1;
+  const graph1 = buildGraph(edgesTree1, n);
+  const graph2 = buildGraph(edgesTree2, m);
+
+  const maxInGraph2 = Math.max(
+    ...Array.from({ length: m }, (_, i) => dfs(graph2, i, -1, k - 1))
+  );
+
+  return Array.from(
+    { length: n },
+    (_, i) => maxInGraph2 + dfs(graph1, i, -1, k)
+  );
+}
