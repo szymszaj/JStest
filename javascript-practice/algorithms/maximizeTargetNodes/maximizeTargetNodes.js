@@ -34,3 +34,11 @@ function maximizeTargetNodes(edgesTree1, edgesTree2, k) {
     (_, i) => maxInGraph2 + dfs(graph1, i, -1, k)
   );
 }
+
+const edges1 = [
+  [0, 1],
+  [1, 2],
+];
+const edges2 = [[0, 1]];
+const k = 2;
+console.log(maximizeTargetNodes(edges1, edges2, k));
