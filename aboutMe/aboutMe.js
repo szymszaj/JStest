@@ -48,3 +48,12 @@ class Person {
     }
   }
 }
+
+const person = new Person("po", "po", "1960-06-06", "UK", [
+  "Traveling",
+  "Computer games",
+]);
+
+person.describe();
+person.addHobby("hiking");
+person.describe();
