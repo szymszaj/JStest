@@ -22,4 +22,25 @@ function AddFruit() {
   );
 }
 
-// export default AddFruit;
+function AddCars() {
+  const [cars, setCars] = useState(["BMW", "Audi"]);
+  const [newCar, setNewCar] = useState("");
+
+  const handleAdd = () => {
+    setCars([...cars, newCar]);
+    setNewCar("");
+  };
+
+  return (
+    <div>
+      <input value={newCar} onChange={(e) => setNewCar(e.target.value)} />
+      <button onClick={handleAdd}>Dodaj samochód</button>
+      <ul>
+        {cars.map((car, idx) => (
+          <li key={idx}>{car}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+export { AddFruit, AddCars };
