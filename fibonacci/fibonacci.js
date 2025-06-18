@@ -69,3 +69,17 @@ function fibonacciWithErrorHandling(n) {
   }
   return seq;
 }
+
+function fibonacci(n, onlyLast = false) {
+  if (n <= 0) return onlyLast ? null : [];
+  if (n === 1) return onlyLast ? 0 : [0];
+  const seq = [0, 1];
+  for (let i = 2; i < n; i++) {
+    seq.push(seq[i - 1] + seq[i - 2]);
+  }
+  return onlyLast ? seq[n - 1] : seq;
+}
+
+
+console.log(fibonacci(6));      
+console.log(fibonacci(6, true)); 
