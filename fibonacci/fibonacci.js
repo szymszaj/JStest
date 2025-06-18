@@ -70,6 +70,7 @@ function fibonacciWithErrorHandling(n) {
   return seq;
 }
 
+// Function to generate the Fibonacci sequence up to n elements with an option to return only the last element
 function fibonacci(n, onlyLast = false) {
   if (n <= 0) return onlyLast ? null : [];
   if (n === 1) return onlyLast ? 0 : [0];
@@ -80,6 +81,5 @@ function fibonacci(n, onlyLast = false) {
   return onlyLast ? seq[n - 1] : seq;
 }
 
-
-console.log(fibonacci(6));      
-console.log(fibonacci(6, true)); 
+console.log(fibonacci(6));
+console.log(fibonacci(6, true));
