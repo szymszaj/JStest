@@ -19,3 +19,19 @@ function bubbleSort(arr, options = {}) {
   }
   return sortedArr;
 }
+
+const numbers = [5, 2, 9, 1, 5, 6];
+console.log("Rosnąco:", bubbleSort(numbers));
+console.log("Malejąco:", bubbleSort(numbers, { descending: true }));
+console.log("Rosnąco ze szczegółami:");
+bubbleSort(numbers, { showSteps: true });
+
+const people = [
+  { name: "Anna", age: 30 },
+  { name: "Piotr", age: 25 },
+  { name: "Jan", age: 40 },
+];
+const sortedPeople = bubbleSort(people, {
+  compareFn: (a, b) => a.age - b.age,
+});
+console.log(sortedPeople);
