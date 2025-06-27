@@ -7,15 +7,19 @@ function bubbleSort(arr, options = {}) {
   const defaultCompare = (a, b) => (descending ? b - a : a - b);
   const cmp = compareFn || defaultCompare;
 
+  let swapped;
   for (let i = 0; i < n - 1; i++) {
+    swapped = false;
     for (let j = 0; j < n - i - 1; j++) {
       if (cmp(sortedArr[j], sortedArr[j + 1]) > 0) {
         [sortedArr[j], sortedArr[j + 1]] = [sortedArr[j + 1], sortedArr[j]];
+        swapped = true;
         if (showSteps) {
-          console.log(`Step: ${sortedArr.join(", ")}`);
+          console.log(`Step (i=${i}, j=${j}): ${JSON.stringify(sortedArr)}`);
         }
       }
     }
+    if (!swapped) break;
   }
   return sortedArr;
 }
