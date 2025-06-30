@@ -1,10 +1,22 @@
 function bubbleSort(arr, options = {}) {
   const { descending = false, showSteps = false, compareFn = null } = options;
 
+  if (!Array.isArray(arr)) {
+    throw new TypeError("Pierwszy argument musi być tablicą.");
+  }
+
   let sortedArr = arr.slice();
   let n = sortedArr.length;
 
-  const defaultCompare = (a, b) => (descending ? b - a : a - b);
+  const defaultCompare = (a, b) => {
+    if (typeof a === "number" && typeof b === "number") {
+      return descending ? b - a : a - b;
+    }
+    if (typeof a === "string" && typeof b === "string") {
+      return descending ? b.localeCompare(a) : a.localeCompare(b);
+    }
+    return 0;
+  };
   const cmp = compareFn || defaultCompare;
 
   let swapped;
@@ -23,6 +35,7 @@ function bubbleSort(arr, options = {}) {
   }
   return sortedArr;
 }
+
 const numbers = [5, 2, 9, 1, 5, 6];
 console.log("Rosnąco:", bubbleSort(numbers));
 console.log("Malejąco:", bubbleSort(numbers, { descending: true }));
@@ -39,3 +52,7 @@ const sortedPeople = bubbleSort(people, {
   showSteps: true,
 });
 console.log("Osoby posortowane po wieku:", sortedPeople);
+
+const fruits = ["banana", "apple", "orange"];
+console.log("Owoce rosnąco:", bubbleSort(fruits));
+console.log("Owoce malejąco:", bubbleSort(fruits, { descending: true }));
