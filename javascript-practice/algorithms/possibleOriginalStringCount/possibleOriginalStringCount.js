@@ -1,31 +1,31 @@
-function possibleOriginalStringCount(word, k) {
-  const MOD = 1_000_000_007;
+function getGroupLengths(word) {
   const groupLengths = [];
   let count = 1;
-
   for (let i = 1; i < word.length; i++) {
-    if (word[i] === word[i - 1]) {
-      count++;
-    } else {
+    if (word[i] === word[i - 1]) count++;
+    else {
       groupLengths.push(count);
       count = 1;
     }
   }
   groupLengths.push(count);
+  return groupLengths;
+}
 
-  let totalPossibilities = 1;
-  for (const length of groupLengths) {
-    totalPossibilities = (totalPossibilities * length) % MOD;
-  }
+function getTotalPossibilities(groupLengths, MOD) {
+  return groupLengths.reduce((prod, len) => (prod * len) % MOD, 1);
+}
+
+function possibleOriginalStringCount(word, k) {
+  const MOD = 1_000_000_007;
+  const groupLengths = getGroupLengths(word);
+  const totalPossibilities = getTotalPossibilities(groupLengths, MOD);
 
   const n = groupLengths.length;
-  if (n >= k) {
-    return totalPossibilities;
-  }
+  if (n >= k) return totalPossibilities;
 
   let dp = new Array(k + 1).fill(0);
   dp[0] = 1;
-
   let dpPrefixSum = Array(k + 2).fill(1);
   dpPrefixSum[0] = 0;
 
@@ -41,7 +41,7 @@ function possibleOriginalStringCount(word, k) {
       dpPrefixSum[j] = (dpPrefixSum[j - 1] + dp[j - 1]) % MOD;
     }
   }
-
   return (totalPossibilities - dpPrefixSum[k] + MOD) % MOD;
 }
+
 console.log(possibleOriginalStringCount("aabbcc", 5));
