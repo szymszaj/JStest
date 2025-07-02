@@ -44,3 +44,4 @@ function possibleOriginalStringCount(word, k) {
 
   return (totalPossibilities - dpPrefixSum[k] + MOD) % MOD;
 }
+console.log(possibleOriginalStringCount("aabbcc", 5));
