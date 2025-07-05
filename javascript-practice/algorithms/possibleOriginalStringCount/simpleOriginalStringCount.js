@@ -33,3 +33,8 @@ function simpleOriginalStringCount(word, k) {
 
   return productOfCombination(groupSizes, k);
 }
+
+console.log(simpleOriginalStringCount("aabbcc", 5));
+console.log(simpleOriginalStringCount("aabbcc", 3));
+console.log(simpleOriginalStringCount("aaa", 1));
+console.log(simpleOriginalStringCount("", 0));
