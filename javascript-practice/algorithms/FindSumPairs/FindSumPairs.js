@@ -36,3 +36,10 @@ class FindSumPairs {
     return result;
   }
 }
+
+const findSumPairs = new FindSumPairs([1, 2, 3], [4, 5, 6]);
+console.log(findSumPairs.count(7));
+findSumPairs.add(0, 1);
+console.log(findSumPairs.count(7));
+findSumPairs.add(1, 2);
+console.log(findSumPairs.count(7));
