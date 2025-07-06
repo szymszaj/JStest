@@ -1,8 +1,4 @@
 class FindSumPairs {
-  /**
-   * @param {number[]} nums1
-   * @param {number[]} nums2
-   */
   constructor(nums1, nums2) {
     this.nums1 = nums1;
     this.nums2 = nums2;
@@ -17,29 +13,18 @@ class FindSumPairs {
     }
   }
 
-  /**
-   * @param {number} index
-   * @param {number} val
-   * @return {void}
-   */
   add(index, val) {
     const oldVal = this.nums2[index];
     const newVal = oldVal + val;
     this.nums2[index] = newVal;
 
-    // Decrement old value count
     this.nums2Count.set(oldVal, this.nums2Count.get(oldVal) - 1);
     if (this.nums2Count.get(oldVal) === 0) {
       this.nums2Count.delete(oldVal);
     }
-    // Increment new value count
     this.nums2Count.set(newVal, (this.nums2Count.get(newVal) || 0) + 1);
   }
 
-  /**
-   * @param {number} tot
-   * @return {number}
-   */
   count(tot) {
     let result = 0;
     for (const [num1, count1] of this.nums1Count.entries()) {
