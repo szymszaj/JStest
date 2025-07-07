@@ -3,35 +3,39 @@ function simpleOriginalStringCount(word, k) {
   if (typeof word !== "string" || typeof k !== "number" || k < 0) return 0;
   if (k === 0) return 1;
 
-  let groupSizes = [];
-  let currentCount = 1;
-  for (let i = 1; i < word.length; i++) {
-    if (word[i] === word[i - 1]) {
-      currentCount++;
-    } else {
-      groupSizes.push(currentCount);
-      currentCount = 1;
+  function getGroupSizes(str) {
+    if (!str) return [];
+    const sizes = [];
+    let count = 1;
+    for (let i = 1; i < str.length; i++) {
+      if (str[i] === str[i - 1]) count++;
+      else {
+        sizes.push(count);
+        count = 1;
+      }
     }
+    sizes.push(count);
+    return sizes;
   }
-  if (word.length > 0) groupSizes.push(currentCount);
 
+  const groupSizes = getGroupSizes(word);
   if (groupSizes.length < k) return 0;
 
   const memo = {};
-  function productOfCombination(arr, k, start = 0) {
-    const key = `${k},${start}`;
+  function countCombinations(idx, left) {
+    if (left === 0) return 1;
+    if (groupSizes.length - idx < left) return 0;
+    const key = `${idx},${left}`;
     if (memo[key] !== undefined) return memo[key];
-    if (k === 0) return 1;
-    let result = 0;
-    for (let i = start; i <= arr.length - k; i++) {
-      let prod = arr[i] * productOfCombination(arr, k - 1, i + 1);
-      result = (result + (prod % MOD)) % MOD;
+    let res = 0;
+    for (let i = idx; i <= groupSizes.length - left; i++) {
+      res = (res + groupSizes[i] * countCombinations(i + 1, left - 1)) % MOD;
     }
-    memo[key] = result;
-    return result;
+    memo[key] = res;
+    return res;
   }
 
-  return productOfCombination(groupSizes, k);
+  return countCombinations(0, k);
 }
 
 console.log(simpleOriginalStringCount("aabbcc", 5));
