@@ -1,35 +1,48 @@
 function maxFreeTime(eventTime, k, startTime, endTime) {
+  if (startTime.length !== endTime.length)
+    throw new Error("startTime and endTime arrays must have the same length.");
   const n = startTime.length;
-  let res = 0;
+  if (k >= n) return eventTime;
 
   let meetings = [];
   for (let i = 0; i < n; i++) {
     meetings.push({ start: startTime[i], end: endTime[i] });
   }
   meetings.sort((a, b) => a.start - b.start);
-  for (let i = 0; i < n; i++) {
-    startTime[i] = meetings[i].start;
-    endTime[i] = meetings[i].end;
+
+  let merged = [];
+  for (const m of meetings) {
+    if (merged.length === 0 || merged[merged.length - 1].end < m.start) {
+      merged.push({ ...m });
+    } else {
+      merged[merged.length - 1].end = Math.max(
+        merged[merged.length - 1].end,
+        m.end
+      );
+    }
   }
 
-  const sum = new Array(n + 1).fill(0);
-  for (let i = 0; i < n; i++) {
+  startTime = merged.map((m) => m.start);
+  endTime = merged.map((m) => m.end);
+  const mLen = merged.length;
+
+  const sum = new Array(mLen + 1).fill(0);
+  for (let i = 0; i < mLen; i++) {
     sum[i + 1] = sum[i] + (endTime[i] - startTime[i]);
   }
 
-  for (let i = k - 1; i < n; i++) {
-    const right = i === n - 1 ? eventTime : startTime[i + 1];
+  let res = 0,
+    resRange = [0, eventTime];
+  for (let i = k - 1; i < mLen; i++) {
+    const right = i === mLen - 1 ? eventTime : startTime[i + 1];
     const left = i === k - 1 ? 0 : endTime[i - k];
     const meetingsDuration = sum[i + 1] - sum[i - k + 1];
-    res = Math.max(res, right - left - meetingsDuration);
+    const free = right - left - meetingsDuration;
+    if (free > res) {
+      res = free;
+      resRange = [left, right];
+    }
   }
 
-  return res;
+  return { maxFreeTime: res, freeInterval: resRange };
 }
-
-const eventTime = 24;
-const k = 2;
-const startTime = [2, 6, 10, 15];
-const endTime = [4, 8, 12, 17];
-
-console.log(maxFreeTime(eventTime, k, startTime, endTime));
