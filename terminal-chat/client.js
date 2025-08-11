@@ -76,7 +76,7 @@ function menu() {
 }
 
 rl.question(chalk.magenta("Podaj swój nick: "), (nick) => {
-  username = nick || "Anon";
+  username = nick;
   console.log(gradient.summer(`Witaj ${username}!`));
   menu();
 });

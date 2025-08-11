@@ -1,13 +1,13 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
+
+const { PORT, MESSAGES_FILE } = require("./config");
+
 const app = express();
-const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
-
-const MESSAGES_FILE = "./messages.json";
 
 app.get("/messages", (req, res) => {
   if (!fs.existsSync(MESSAGES_FILE)) return res.json([]);
