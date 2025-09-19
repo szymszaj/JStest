@@ -25,3 +25,8 @@ console.log(
     discount * 100
   }% is $${product.price * (1 - discount)}`
 );
+
+const userDescriptions = users.map(
+  (u) => `Hi my name is ${u.name} and I am ${u.age} years old`
+);
+console.log(userDescriptions);
