@@ -54,7 +54,6 @@ console.log(sortedPeople);
 let pets = ["Dog", "Cat", "Rabbit"];
 pets.forEach((pet) => console.log(pet));
 
-//reduce
 const transactions = [
   { type: "income", amount: 1000 },
   { type: "expense", amount: 300 },
@@ -74,4 +73,5 @@ const summary = transactions.reduce(
   },
   { income: 0, expense: 0 }
 );
+
 console.log("TRANSACTION SUMMARY:", summary);
