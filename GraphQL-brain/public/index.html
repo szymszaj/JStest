@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Games Review GraphQL API</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Games Review Database</h1>
+        <p class="subtitle">GraphQL API Demo</p>
+      </header>
+
+      <div class="tabs">
+        <button class="tab-button active" data-tab="games">Gry</button>
+        <button class="tab-button" data-tab="reviews">Recenzje</button>
+        <button class="tab-button" data-tab="authors">Autorzy</button>
+        <button class="tab-button" data-tab="publishers">Wydawcy</button>
+        <button class="tab-button" data-tab="add">Dodaj</button>
+        <button class="tab-button" data-tab="graphql">GraphQL Query</button>
+      </div>
+
+      <div class="content">
+        <div id="games-tab" class="tab-content active">
+          <div class="filters">
+            <select id="genre-filter">
+              <option value="">Wszystkie gatunki</option>
+              <option value="RPG">RPG</option>
+              <option value="Sandbox">Sandbox</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Puzzle">Puzzle</option>
+              <option value="FPS">FPS</option>
+              <option value="Platformer">Platformer</option>
+            </select>
+            <button id="load-top-rated">Top Rated Games</button>
+          </div>
+          <div id="games-list" class="grid"></div>
+        </div>
+
+        <div id="reviews-tab" class="tab-content">
+          <div id="reviews-list" class="list"></div>
+        </div>
+
+        <div id="authors-tab" class="tab-content">
+          <div id="authors-list" class="grid"></div>
+        </div>
+
+        <div id="publishers-tab" class="tab-content">
+          <div id="publishers-list" class="grid"></div>
+        </div>
+
+        <div id="add-tab" class="tab-content">
+          <div class="form-container">
+            <h2>Dodaj nową grę</h2>
+            <form id="add-game-form">
+              <input
+                type="text"
+                id="game-name"
+                placeholder="Nazwa gry"
+                required
+              />
+              <textarea
+                id="game-description"
+                placeholder="Opis"
+                rows="3"
+              ></textarea>
+              <input
+                type="date"
+                id="game-release-date"
+                placeholder="Data wydania"
+              />
+              <input
+                type="text"
+                id="game-platforms"
+                placeholder="Platformy (oddziel przecinkami)"
+                required
+              />
+              <input type="text" id="game-genre" placeholder="Gatunek" />
+              <select id="game-publisher">
+                <option value="">Wybierz wydawcę</option>
+              </select>
+              <button type="submit">Dodaj grę</button>
+            </form>
+
+            <h2>Dodaj recenzję</h2>
+            <form id="add-review-form">
+              <select id="review-game" required>
+                <option value="">Wybierz grę</option>
+              </select>
+              <select id="review-author" required>
+                <option value="">Wybierz autora</option>
+              </select>
+              <input
+                type="number"
+                id="review-rating"
+                min="1"
+                max="10"
+                placeholder="Ocena (1-10)"
+                required
+              />
+              <textarea
+                id="review-comment"
+                placeholder="Komentarz"
+                rows="3"
+                required
+              ></textarea>
+              <input
+                type="number"
+                id="review-likes"
+                min="0"
+                placeholder="Liczba polubień"
+                value="0"
+              />
+              <button type="submit">Dodaj recenzję</button>
+            </form>
+          </div>
+        </div>
+
+        <div id="graphql-tab" class="tab-content">
+          <div class="graphql-container">
+            <h2>GraphQL Query Playground</h2>
+            <div class="query-examples">
+              <button class="example-btn" data-query="allGames">
+                Wszystkie gry
+              </button>
+              <button class="example-btn" data-query="gameWithReviews">
+                Gra z recenzjami
+              </button>
+              <button class="example-btn" data-query="topRated">Top gry</button>
+              <button class="example-btn" data-query="publisherGames">
+                Gry wydawcy
+              </button>
+            </div>
+            <textarea
+              id="graphql-query"
+              placeholder="Wpisz zapytanie GraphQL..."
+              rows="10"
+            ></textarea>
+            <button id="execute-query">Wykonaj zapytanie</button>
+            <div class="result">
+              <h3>Wynik:</h3>
+              <pre id="graphql-result"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
