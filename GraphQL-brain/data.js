@@ -11,6 +11,24 @@ const publishers = [
     country: "Sweden",
     founded: "2009-05-17",
   },
+  {
+    id: "3",
+    name: "Nintendo",
+    country: "Japan",
+    founded: "1889-09-23",
+  },
+  {
+    id: "4",
+    name: "Valve Corporation",
+    country: "USA",
+    founded: "1996-08-24",
+  },
+  {
+    id: "5",
+    name: "FromSoftware",
+    country: "Japan",
+    founded: "1986-11-01",
+  },
 ];
 
 const games = [
@@ -41,6 +59,51 @@ const games = [
     genre: "Sandbox",
     publisher: "2",
   },
+  {
+    id: "4",
+    name: "The Legend of Zelda: Breath of the Wild",
+    description: "Przygodowa gra akcji w otwartym świecie",
+    releaseDate: "2017-03-03",
+    platforms: ["Switch", "Wii U"],
+    genre: "Adventure",
+    publisher: "3",
+  },
+  {
+    id: "5",
+    name: "Portal 2",
+    description: "Gra logiczna FPS z portalami",
+    releaseDate: "2011-04-19",
+    platforms: ["PC", "PS3", "Xbox 360"],
+    genre: "Puzzle",
+    publisher: "4",
+  },
+  {
+    id: "6",
+    name: "Elden Ring",
+    description: "Souls-like RPG w otwartym świecie",
+    releaseDate: "2022-02-25",
+    platforms: ["PC", "PS4", "PS5", "Xbox One", "Xbox Series X"],
+    genre: "RPG",
+    publisher: "5",
+  },
+  {
+    id: "7",
+    name: "Half-Life 2",
+    description: "Klasyczny FPS science fiction",
+    releaseDate: "2004-11-16",
+    platforms: ["PC", "Xbox", "PS3"],
+    genre: "FPS",
+    publisher: "4",
+  },
+  {
+    id: "8",
+    name: "Super Mario Odyssey",
+    description: "Platformówka 3D z Mario",
+    releaseDate: "2017-10-27",
+    platforms: ["Switch"],
+    genre: "Platformer",
+    publisher: "3",
+  },
 ];
 
 const authors = [
@@ -60,6 +123,24 @@ const authors = [
     id: "3",
     name: "Michał Wiśniewski",
     email: "michal.wisniewski@email.com",
+    verified: true,
+  },
+  {
+    id: "4",
+    name: "Katarzyna Zielińska",
+    email: "k.zielinska@email.com",
+    verified: true,
+  },
+  {
+    id: "5",
+    name: "Piotr Lewandowski",
+    email: "p.lewandowski@email.com",
+    verified: false,
+  },
+  {
+    id: "6",
+    name: "Magdalena Kowalczyk",
+    email: "m.kowalczyk@email.com",
     verified: true,
   },
 ];
@@ -97,6 +178,70 @@ const reviews = [
     game: "3",
     author: "1",
   },
+  {
+    id: "5",
+    rating: 10,
+    comment: "Najlepsza gra jaką kiedykolwiek grałem!",
+    likes: 15,
+    game: "4",
+    author: "4",
+  },
+  {
+    id: "6",
+    rating: 9,
+    comment: "Świetna mechanika portalowa!",
+    likes: 8,
+    game: "5",
+    author: "5",
+  },
+  {
+    id: "7",
+    rating: 10,
+    comment: "Masterpiece!",
+    likes: 20,
+    game: "6",
+    author: "6",
+  },
+  {
+    id: "8",
+    rating: 9,
+    comment: "Klasyk gatunku FPS",
+    likes: 12,
+    game: "7",
+    author: "1",
+  },
+  {
+    id: "9",
+    rating: 10,
+    comment: "Najlepsza platformówka!",
+    likes: 10,
+    game: "8",
+    author: "2",
+  },
+  {
+    id: "10",
+    rating: 8,
+    comment: "Bardzo trudna, ale satysfakcjonująca",
+    likes: 6,
+    game: "6",
+    author: "3",
+  },
+  {
+    id: "11",
+    rating: 9,
+    comment: "Piękna grafika i świetna fabuła",
+    likes: 9,
+    game: "4",
+    author: "5",
+  },
+  {
+    id: "12",
+    rating: 7,
+    comment: "Dobra gra, ale zbyt krótka",
+    likes: 3,
+    game: "5",
+    author: "4",
+  },
 ];
 
-module.exports = { publishers, games, authors, reviews };
+export { publishers, games, authors, reviews };
