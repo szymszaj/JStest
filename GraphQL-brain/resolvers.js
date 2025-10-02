@@ -14,6 +14,22 @@ export const resolvers = {
     game: (_, { id }) => games.find((g) => g.id === id),
     author: (_, { id }) => authors.find((a) => a.id === id),
     publisher: (_, { id }) => publishers.find((p) => p.id === id),
+    gamesByGenre: (_, { genre }) =>
+      games.filter((g) => g.genre?.toLowerCase() === genre.toLowerCase()),
+    topRatedGames: (_, { limit = 5 }) => {
+      const gamesWithAvgRating = games.map((game) => {
+        const gameReviews = reviews.filter((r) => r.game === game.id);
+        const avgRating =
+          gameReviews.length > 0
+            ? gameReviews.reduce((sum, r) => sum + r.rating, 0) /
+              gameReviews.length
+            : 0;
+        return { ...game, avgRating };
+      });
+      return gamesWithAvgRating
+        .sort((a, b) => b.avgRating - a.avgRating)
+        .slice(0, limit);
+    },
   },
   Mutation: {
     addGame: (
