@@ -1,11 +1,9 @@
 const GRAPHQL_URL = "http://localhost:4000/";
 
-// Tab switching
 document.querySelectorAll(".tab-button").forEach((button) => {
   button.addEventListener("click", () => {
     const tabId = button.getAttribute("data-tab");
 
-    // Remove active class from all tabs and buttons
     document
       .querySelectorAll(".tab-button")
       .forEach((btn) => btn.classList.remove("active"));
@@ -13,11 +11,9 @@ document.querySelectorAll(".tab-button").forEach((button) => {
       .querySelectorAll(".tab-content")
       .forEach((content) => content.classList.remove("active"));
 
-    // Add active class to clicked button and corresponding content
     button.classList.add("active");
     document.getElementById(`${tabId}-tab`).classList.add("active");
 
-    // Load data when tab is activated
     switch (tabId) {
       case "games":
         loadGames();
@@ -38,7 +34,6 @@ document.querySelectorAll(".tab-button").forEach((button) => {
   });
 });
 
-// GraphQL query function
 async function graphqlQuery(query, variables = {}) {
   try {
     const response = await fetch(GRAPHQL_URL, {
@@ -60,7 +55,6 @@ async function graphqlQuery(query, variables = {}) {
   }
 }
 
-// Load games
 async function loadGames(genre = "") {
   const container = document.getElementById("games-list");
   container.innerHTML = '<div class="loading">Ładowanie gier...</div>';
@@ -137,7 +131,6 @@ async function loadGames(genre = "") {
   }
 }
 
-// Load top rated games
 async function loadTopRatedGames() {
   const container = document.getElementById("games-list");
   container.innerHTML =
@@ -190,7 +183,6 @@ async function loadTopRatedGames() {
   }
 }
 
-// Load reviews
 async function loadReviews() {
   const container = document.getElementById("reviews-list");
   container.innerHTML = '<div class="loading">Ładowanie recenzji...</div>';
@@ -237,7 +229,6 @@ async function loadReviews() {
   }
 }
 
-// Load authors
 async function loadAuthors() {
   const container = document.getElementById("authors-list");
   container.innerHTML = '<div class="loading">Ładowanie autorów...</div>';
@@ -282,7 +273,6 @@ async function loadAuthors() {
   }
 }
 
-// Load publishers
 async function loadPublishers() {
   const container = document.getElementById("publishers-list");
   container.innerHTML = '<div class="loading">Ładowanie wydawców...</div>';
@@ -327,7 +317,6 @@ async function loadPublishers() {
   }
 }
 
-// Populate form selects
 async function populateFormSelects() {
   try {
     const query = `
@@ -349,7 +338,6 @@ async function populateFormSelects() {
 
     const data = await graphqlQuery(query);
 
-    // Populate game publisher select
     const publisherSelect = document.getElementById("game-publisher");
     publisherSelect.innerHTML =
       '<option value="">Wybierz wydawcę (opcjonalnie)</option>' +
@@ -357,7 +345,6 @@ async function populateFormSelects() {
         .map((p) => `<option value="${p.id}">${p.name}</option>`)
         .join("");
 
-    // Populate review game select
     const gameSelect = document.getElementById("review-game");
     gameSelect.innerHTML =
       '<option value="">Wybierz grę</option>' +
@@ -365,7 +352,6 @@ async function populateFormSelects() {
         .map((g) => `<option value="${g.id}">${g.name}</option>`)
         .join("");
 
-    // Populate review author select
     const authorSelect = document.getElementById("review-author");
     authorSelect.innerHTML =
       '<option value="">Wybierz autora</option>' +
@@ -377,7 +363,6 @@ async function populateFormSelects() {
   }
 }
 
-// Add game form
 document
   .getElementById("add-game-form")
   .addEventListener("submit", async (e) => {
@@ -414,13 +399,12 @@ document
 
       e.target.reset();
       alert("Gra została dodana!");
-      populateFormSelects(); // Refresh selects
+      populateFormSelects();
     } catch (error) {
       alert("Błąd: " + error.message);
     }
   });
 
-// Add review form
 document
   .getElementById("add-review-form")
   .addEventListener("submit", async (e) => {
@@ -457,17 +441,14 @@ document
     }
   });
 
-// Genre filter
 document.getElementById("genre-filter").addEventListener("change", (e) => {
   loadGames(e.target.value);
 });
 
-// Top rated button
 document.getElementById("load-top-rated").addEventListener("click", () => {
   loadTopRatedGames();
 });
 
-// GraphQL playground
 const exampleQueries = {
   allGames: `query {
   games {
@@ -540,5 +521,4 @@ document.getElementById("execute-query").addEventListener("click", async () => {
   }
 });
 
-// Initial load
 loadGames();
