@@ -30,3 +30,28 @@ const userDescriptions = users.map(
   (u) => `Hi my name is ${u.name} and I am ${u.age} years old`
 );
 console.log(userDescriptions);
+
+const title = "ES6 Template Literals";
+const author = "MDN Web Docs";
+const year = 2015;
+
+const bookInfo = `
+  Title: ${title}
+  Author: ${author}
+  Year: ${year}
+`;
+console.log(bookInfo);
+
+const a = 5;
+const b = 10;
+console.log(`Fifteen is ${a + b} and not ${2 * a + b}.`);
+
+const multiLine = `This is a string
+that spans across
+multiple lines.`;
+console.log(multiLine);
+
+const calculateArea = (...args) => {
+  const [radius, pi = 3.14159] = args;
+  return `The area of a circle with radius ${radius} is ${pi * radius * radius}`;
+}
