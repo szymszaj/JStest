@@ -3,12 +3,26 @@ const lib = require("./kcal_lib");
 const { ACTIVITY_MULTIPLIERS, GOAL_ADJUST, toNumberOrNull, computeResults } =
   lib;
 
+// ANSI color codes
+const colors = {
+  reset: '\x1b[0m',
+  bright: '\x1b[1m',
+  cyan: '\x1b[36m',
+  green: '\x1b[32m',
+  yellow: '\x1b[33m',
+  blue: '\x1b[34m',
+  magenta: '\x1b[35m',
+  red: '\x1b[31m'
+};
+
+const c = (color, text) => `${colors[color]}${text}${colors.reset}`;
+
 function printHelp() {
-  console.log("Kalkulator kcal — użycie:");
+  console.log(c('bright', '\nKalkulator kcal — użycie:'));
   console.log(
-    "node kcal_calculator.js --sex <m|f> --age <lat> --weight <kg> --height <cm> --activity <sedentary|light|moderate|active|very_active> --goal <lose|maintain|gain>"
+    c('cyan', 'node kcal_calculator.js') + " --sex <m|f> --age <lat> --weight <kg> --height <cm> --activity <sedentary|light|moderate|active|very_active> --goal <lose|maintain|gain>"
   );
-  console.log("Lub uruchom bez argumentów, aby wejść w tryb interaktywny.");
+  console.log(c('yellow', "Lub uruchom bez argumentów, aby wejść w tryb interaktywny."));
 }
 
 function parseArgs(argv) {
@@ -67,12 +81,12 @@ async function interactivePrompt() {
     }
 
     console.log(
-      "Poziomy aktywności: sedentary, light, moderate, active, very_active"
+      c('cyan', "Poziomy aktywności: ") + "sedentary, light, moderate, active, very_active"
     );
-    let activity = await q("Aktywność: ");
+    let activity = await q(c('yellow', "Aktywność: "));
     while (!ACTIVITY_MULTIPLIERS[activity]) {
       activity = await q(
-        "Wybierz: sedentary|light|moderate|active|very_active: "
+        c('red', "Wybierz: ") + "sedentary|light|moderate|active|very_active: "
       );
     }
 
@@ -101,24 +115,21 @@ function computeAndPrint(inputs) {
     goal,
   });
 
-  console.log("\nWyniki:");
-  console.log(`BMR (podstawowa przemiana materii): ${round(bmr)} kcal/dzień`);
+  console.log(c('bright', '\nWyniki:'));
+  console.log(c('cyan', 'BMR') + ` (podstawowa przemiana materii): ` + c('green', `${round(bmr)} kcal/dzień`));
   console.log(
-    `TDEE (przy uwzględnieniu aktywności): ${round(
-      tdee
-    )} kcal/dzień (multiplier: ${multiplier})`
+    c('cyan', 'TDEE') + ` (przy uwzględnieniu aktywności): ` + c('green', `${round(tdee)} kcal/dzień`) + c('blue', ` (multiplier: ${multiplier})`)
   );
+  
   if (goal === "lose")
     console.log(
-      `Aby tracić ~0.5 kg/tydzień: ~${round(adjusted)} kcal/dzień (≈ -500 kcal)`
+      c('yellow', 'Aby tracić ~0.5 kg/tydzień: ') + c('magenta', `~${round(adjusted)} kcal/dzień`) + c('red', ' (≈ -500 kcal)')
     );
   else if (goal === "gain")
     console.log(
-      `Aby przybierać ~0.5 kg/tydzień: ~${round(
-        adjusted
-      )} kcal/dzień (≈ +500 kcal)`
+      c('yellow', 'Aby przybierać ~0.5 kg/tydzień: ') + c('magenta', `~${round(adjusted)} kcal/dzień`) + c('green', ' (≈ +500 kcal)')
     );
-  else console.log(`Aby utrzymać wagę: ~${round(adjusted)} kcal/dzień`);
+  else console.log(c('yellow', 'Aby utrzymać wagę: ') + c('magenta', `~${round(adjusted)} kcal/dzień`));
 }
 
 (async function main() {
@@ -153,7 +164,7 @@ function computeAndPrint(inputs) {
     height === null ||
     !ACTIVITY_MULTIPLIERS[activity]
   ) {
-    console.error("Nieprawidłowe (lub brakujące) argumenty.");
+    console.error(c('red', 'Nieprawidłowe (lub brakujące) argumenty.'));
     printHelp();
     return;
   }
