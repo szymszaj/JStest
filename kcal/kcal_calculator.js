@@ -3,7 +3,6 @@ const lib = require("./kcal_lib");
 const { ACTIVITY_MULTIPLIERS, GOAL_ADJUST, toNumberOrNull, computeResults } =
   lib;
 
-// ANSI color codes
 const colors = {
   reset: "\x1b[0m",
   bright: "\x1b[1m",
