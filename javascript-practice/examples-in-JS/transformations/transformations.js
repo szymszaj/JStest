@@ -1,29 +1,42 @@
 const {
-  pipe, compose, toSnakeCase, toKebab, toCamel,
-  capitalize, titleCase, toSlug, pick, omit,
-  groupBy, buildTree, flatten
+  pipe,
+  compose,
+  toSnakeCase,
+  toKebab,
+  toCamel,
+  capitalize,
+  titleCase,
+  toSlug,
+  pick,
+  omit,
+  groupBy,
+  buildTree,
+  flatten,
 } = require("./transform_utils");
 
 const numbers = [1, 2, 3, 4, 5];
 
-const doubled = numbers.map(n => n * 2);
+const doubled = numbers.map((n) => n * 2);
 console.log("Podwojone:", doubled);
 
-const evenSquared = numbers.filter(n => n % 2 === 0).map(n => n ** 2);
+const evenSquared = numbers.filter((n) => n % 2 === 0).map((n) => n ** 2);
 console.log("Parzyste do kwadratu:", evenSquared);
 
 const sum = numbers.reduce((acc, n) => acc + n, 0);
 console.log("Suma:", sum);
 
-const nested = [[1, 2], [3, 4]];
-const flatDoubled = nested.flatMap(arr => arr.map(n => n * 2));
+const nested = [
+  [1, 2],
+  [3, 4],
+];
+const flatDoubled = nested.flatMap((arr) => arr.map((n) => n * 2));
 console.log("Flat + doubled:", flatDoubled);
 
 const user = {
   firstName: "Jan",
   lastName: "Kowalski",
   age: 25,
-  city: "Warszawa"
+  city: "Warszawa",
 };
 
 const snakeCaseUser = Object.fromEntries(
@@ -40,12 +53,12 @@ const users = [
   { id: 3, name: "Kasia", role: "admin" },
 ];
 
-const usersById = Object.fromEntries(users.map(u => [u.id, u]));
+const usersById = Object.fromEntries(users.map((u) => [u.id, u]));
 console.log("Users by ID:", usersById);
 
 console.log("Grouped by role:", groupBy(users, "role"));
 
-const names = users.map(u => u.name);
+const names = users.map((u) => u.name);
 console.log("Names:", names);
 
 const text = "hello world";
@@ -66,11 +79,16 @@ const categories = [
 console.log("Tree:", JSON.stringify(buildTree(categories), null, 2));
 
 const tree = buildTree(categories);
-console.log("Flattened:", flatten(tree).map(c => `${"  ".repeat(c.depth)}${c.name}`).join("\n"));
+console.log(
+  "Flattened:",
+  flatten(tree)
+    .map((c) => `${"  ".repeat(c.depth)}${c.name}`)
+    .join("\n")
+);
 
-const addOne = x => x + 1;
-const double = x => x * 2;
-const square = x => x ** 2;
+const addOne = (x) => x + 1;
+const double = (x) => x * 2;
+const square = (x) => x ** 2;
 
 const transform = pipe(addOne, double, square);
 console.log("Pipe (5 -> +1 -> *2 -> ^2):", transform(5));
