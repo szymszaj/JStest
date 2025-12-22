@@ -20,3 +20,14 @@ const [first, second, ...rest] = colors;
 function greet({ firstName, lastName }) {
   return `Hello ${firstName} ${lastName}`;
 }
+
+const cardPlayer = {
+  name: "Anna",
+  points: [10, 20, 15, 30],
+};
+
+const totalPoints = getTotalPoints(cardPlayer);
+
+function getTotalPoints({ points }) {
+  return points.reduce((total, point) => total + point, 0);
+}
