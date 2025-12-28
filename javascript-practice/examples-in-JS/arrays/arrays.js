@@ -1,38 +1,29 @@
-const employees = [
+const employer = [
   {
-    id: 1,
-    name: "John",
-    department: "HR",
-    salary: 1000,
-  },
-  {
-    id: 2,
-    name: "Jane",
-    department: "IT",
-    salary: 1500,
-  },
-  {
-    id: 3,
     name: "Alice",
-    department: "HR",
-    salary: 1200,
+    position: "Developer",
+    salary: 70000,
+    id: 1,
+    counttry: "USA",
+  },
+  { name: "Bob", position: "Designer", salary: 65000, id: 2, counttry: "UK" },
+  {
+    name: "Charlie",
+    position: "Manager",
+    salary: 80000,
+    id: 3,
+    counttry: "Canada",
   },
   {
+    name: "Diana",
+    position: "Developer",
+    salary: 72000,
     id: 4,
-    name: "Bob",
-    department: "IT",
-    salary: 1300,
-  },
-  {
-    id: 5,
-    name: "Eve",
-    department: "HR",
-    salary: 1100,
+    counttry: "Australia",
   },
 ];
 
-const updatedEmployees = employees.map((employee) => ({
-  ...employee,
-  salary: employee.salary * 1.7,
-}));
-console.log(updatedEmployees);
+function getEmployerNames(employer) {
+  return employer.map((emo) => emo.name);
+}
+console.log("Employer Names:", getEmployerNames(employer));
