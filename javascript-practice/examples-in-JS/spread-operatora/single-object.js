@@ -95,6 +95,24 @@ const person = {
   age: 28,
   job: "Developer",
 };
+
 const { firstName, lastName, ...rest } = person;
+
 console.log(`Imię: ${firstName}, Nazwisko: ${lastName}`);
 console.log("Pozostałe dane:", rest);
+
+const sum = (...args) => args.reduce((acc, val) => acc + val, 0);
+console.log("Suma 1+2+3+4+5:", sum(1, 2, 3, 4, 5));
+
+const nested = [
+  [1, 2],
+  [3, 4],
+];
+const cloned = [...nested];
+cloned[0][0] = 999;
+console.log("Oryginalna zagnieżdżona tablica:", nested);
+console.log("Skopiowana zagnieżdżona tablica:", cloned);
+
+const config = { database: "mongodb", port: 27017 };
+const updatedConfig = { ...config, port: 3000, ssl: true };
+console.log("Zaktualizowana konfiguracja:", updatedConfig);
