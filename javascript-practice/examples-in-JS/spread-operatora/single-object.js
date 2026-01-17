@@ -7,7 +7,7 @@ const users = [
 const userOperations = {
   updateUser: (users, id, updates) => {
     return users.map((user) =>
-      user.id === id ? { ...user, ...updates } : user
+      user.id === id ? { ...user, ...updates } : user,
     );
   },
 
@@ -25,7 +25,7 @@ const userOperations = {
 
   toggleUserStatus: (users, id) => {
     return users.map((user) =>
-      user.id === id ? { ...user, active: !user.active } : user
+      user.id === id ? { ...user, active: !user.active } : user,
     );
   },
 
