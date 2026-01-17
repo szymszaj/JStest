@@ -56,3 +56,45 @@ try {
 } catch (error) {
   console.error("Error:", error.message);
 }
+
+console.log("\n--- SPREAD OPERATOR - DALSZE PRZYKŁADY ---\n");
+
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+const merged = [...array1, ...array2];
+console.log("Łączone tablice:", merged);
+
+const originalArray = [1, 2, 3];
+const copiedArray = [...originalArray];
+copiedArray[0] = 999;
+console.log("Oryginalna tablica:", originalArray);
+console.log("Skopiowana tablica:", copiedArray);
+
+const user1 = { name: "John", age: 30 };
+const user2 = { email: "john@example.com", city: "New York" };
+const mergedUser = { ...user1, ...user2 };
+console.log("Połączony obiekt:", mergedUser);
+
+const defaults = { theme: "light", fontSize: 14, language: "en" };
+const userPrefs = { theme: "dark", fontSize: 16 };
+const settings = { ...defaults, ...userPrefs };
+console.log("Ustawienia (defaults + preferencje użytkownika):", settings);
+
+const numbers = [2, 5, 10, 1, 8];
+const maxNumber = Math.max(...numbers);
+const minNumber = Math.min(...numbers);
+console.log(`Max: ${maxNumber}, Min: ${minNumber}`);
+
+const items = ["apple", "banana"];
+const withApple = ["orange", ...items, "grape"];
+console.log("Tablica z dodatkami:", withApple);
+
+const person = {
+  firstName: "Anna",
+  lastName: "Smith",
+  age: 28,
+  job: "Developer",
+};
+const { firstName, lastName, ...rest } = person;
+console.log(`Imię: ${firstName}, Nazwisko: ${lastName}`);
+console.log("Pozostałe dane:", rest);
