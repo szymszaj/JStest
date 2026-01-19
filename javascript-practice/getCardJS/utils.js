@@ -11,3 +11,11 @@ export const getProductsTotal = () =>
 export const getUniqueCategories = () => [
   ...new Set(products.map((p) => p.category)),
 ];
+
+//2
+export const getActiveUsers = () => users.filter((u) => u.active);
+
+export const searchUsers = (query) =>
+  users.filter((u) => u.name.toLowerCase().includes(query.toLowerCase()));
+
+export const hasAdmin = () => users.some((u) => u.role === "admin");
