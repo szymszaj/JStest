@@ -19,3 +19,19 @@ export const searchUsers = (query) =>
   users.filter((u) => u.name.toLowerCase().includes(query.toLowerCase()));
 
 export const hasAdmin = () => users.some((u) => u.role === "admin");
+
+//3
+export const increaseQty = (id) =>
+  cart.map((item) => (item.id === id ? { ...item, qty: item.qty + 1 } : item));
+
+export const removeFromCart = (id) => cart.filter((item) => item.id !== id);
+
+export const getCartTotal = () =>
+  cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+export const groupOrdersByUser = () =>
+  orders.reduce((acc, order) => {
+    acc[order.user] ??= [];
+    acc[order.user].push(order);
+    return acc;
+  }, {});
