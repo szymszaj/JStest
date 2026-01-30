@@ -13,3 +13,6 @@ console.log(createUser("Maria", 30, "Niemcy"));
 const greetUser = (name, greeting = "Cześć") => {
   return `${greeting}, ${name}!`;
 };
+
+onsole.log(greetUser("Anna"));
+console.log(greetUser("Piotr", "Witaj"));
