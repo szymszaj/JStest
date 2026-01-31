@@ -1,5 +1,3 @@
-// FUNKCJE DO PRACY Z TABLICAMI
-
 const filterAdults = (people) => people.filter((person) => person.age >= 18);
 
 const people = [
@@ -21,3 +19,10 @@ const findByName = (people, name) =>
   people.find((person) => person.name === name);
 console.log(findByName(people, "Bartek"));
 
+const filterByAgeRange = (people, minAge, maxAge) =>
+  people.filter((person) => person.age >= minAge && person.age <= maxAge);
+console.log(filterByAgeRange(people, 16, 21));
+
+const sortByName = (people) => {
+  return people.slice().sort((a, b) => a.name.localeCompare(b.name));
+};
