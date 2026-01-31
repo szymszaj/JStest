@@ -13,3 +13,9 @@ console.log(getRandomNumber());
 
 const square = (x) => x * x;
 console.log(square(4));
+
+const greet1 = (name) => {
+  return `Cześć, ${name}, ${name.length} litery!`;
+};
+
+console.log(greet1("Kasia"));
