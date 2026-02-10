@@ -14,3 +14,10 @@ function getFirstTwo([first, second]) {
 
 const numbers = [10, 20, 30, 40];
 console.log(getFirstTwo(numbers));
+
+function sumAndProduct([a, b]) {
+  return { sum: a + b, product: a * b };
+}
+
+const nums = [5, 3];
+console.log(sumAndProduct(nums));
