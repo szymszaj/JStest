@@ -1,3 +1,4 @@
+import { categories } from "./data";
 const {
   pipe,
   compose,
@@ -40,7 +41,7 @@ const user = {
 };
 
 const snakeCaseUser = Object.fromEntries(
-  Object.entries(user).map(([key, val]) => [toSnakeCase(key), val])
+  Object.entries(user).map(([key, val]) => [toSnakeCase(key), val]),
 );
 console.log("Snake case:", snakeCaseUser);
 
@@ -68,14 +69,6 @@ console.log("Kebab:", toKebab("myVariableName"));
 console.log("Camel:", toCamel("my-variable-name"));
 console.log("Slug:", toSlug("Hello World! 123"));
 
-const categories = [
-  { id: 1, name: "Elektronika", parentId: null },
-  { id: 2, name: "Telefony", parentId: 1 },
-  { id: 3, name: "Laptopy", parentId: 1 },
-  { id: 4, name: "iPhone", parentId: 2 },
-  { id: 5, name: "Samsung", parentId: 2 },
-];
-
 console.log("Tree:", JSON.stringify(buildTree(categories), null, 2));
 
 const tree = buildTree(categories);
@@ -83,7 +76,7 @@ console.log(
   "Flattened:",
   flatten(tree)
     .map((c) => `${"  ".repeat(c.depth)}${c.name}`)
-    .join("\n")
+    .join("\n"),
 );
 
 const addOne = (x) => x + 1;
