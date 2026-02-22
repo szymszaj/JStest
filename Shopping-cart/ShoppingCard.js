@@ -17,3 +17,11 @@ const withDiscount = cart.map((item) => ({
   discount: item.price > 200 ? item.price * 0.1 : 0,
   finalPrice: item.price > 200 ? item.price * 0.9 : item.price,
 }));
+
+const updateQuantity = (productId, newQuantity) => 
+  cart.map(item => 
+    item.id === productId ? { ...item, quantity: newQuantity } : item
+  );
+
+console.log('Suma:', totalPrice, 'zł');
+console.log('Produktów:', totalItems);
