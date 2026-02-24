@@ -14,3 +14,13 @@ const groupByCategory = orders.reduce((groups, order) => {
   groups[category].push(order);
   return groups;
 }, {});
+
+const groupByDate = orders.reduce((groups, order) => {
+  const date = order.date;
+  groups[date] = groups[date] || [];
+  groups[date].push(order);
+  return groups;
+}, {});
+
+console.log("Po kategorii:", groupByCategory);
+console.log("Po dacie:", groupByDate);
