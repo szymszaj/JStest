@@ -13,3 +13,25 @@ const searchData = [
   { id: 4, title: "JavaScript zaawansowany", tags: ["js", "advanced", "es6"] },
   { id: 5, title: "Vue.js od podstaw", tags: ["vue", "frontend", "framework"] },
 ];
+
+const search = (query) => {
+  const lowerQuery = query.toLowerCase();
+
+  return searchData.filter((item) => {
+    const titleMatch = item.title.toLowerCase().includes(lowerQuery);
+    const tagsMatch = item.tags.some((tag) => tag.includes(lowerQuery));
+    return titleMatch || tagsMatch;
+  });
+};
+
+const suggestions = search("java");
+console.log("Znaleziono:", suggestions);
+
+const highlightResults = (results, query) =>
+  results.map((item) => ({
+    ...item,
+    highlighted: item.title.replace(
+      new RegExp(query, "gi"),
+      (match) => `**${match}**`,
+    ),
+  }));
