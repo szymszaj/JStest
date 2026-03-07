@@ -17,3 +17,18 @@ const duble = (x) => x * 2;
 
 console.log(greet3("carol"));
 console.log(duble(5));
+
+function getMinMax(arr) {
+  return {
+    min: Math.min(...arr),
+    max: Math.max(...arr),
+  };
+}
+
+const { min, max } = getMinMax([3, 1, 9, 2, 7]);
+console.log(min, max); // 1 9
+
+function noReturn() {
+  const x = 5;
+}
+console.log(noReturn());
