@@ -32,3 +32,21 @@ function noReturn() {
   const x = 5;
 }
 console.log(noReturn());
+
+const noReturn2 = () => {
+  const x = 5;
+};
+console.log(noReturn2());
+
+let count = 0;
+function increment() {
+  count++;
+}
+increment();
+console.log(count);
+
+const increment2 = () => {
+  count++;
+};
+increment2();
+console.log(count);
