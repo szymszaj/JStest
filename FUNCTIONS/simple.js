@@ -26,7 +26,7 @@ function getMinMax(arr) {
 }
 
 const { min, max } = getMinMax([3, 1, 9, 2, 7]);
-console.log(min, max); // 1 9
+console.log(min, max);
 
 function noReturn() {
   const x = 5;
