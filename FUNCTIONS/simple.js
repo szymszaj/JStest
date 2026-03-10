@@ -50,3 +50,15 @@ const increment2 = () => {
 };
 increment2();
 console.log(count);
+
+const filterAndTransform = (arr, predicate, transformer) => {
+  return arr.filter(predicate).map(transformer);
+};
+
+const numbers = [1, 2, 3, 4, 5, 6];
+const result = filterAndTransform(
+  numbers,
+  (n) => n > 2,
+  (n) => n * n,
+);
+console.log(result);
