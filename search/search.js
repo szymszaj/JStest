@@ -15,23 +15,26 @@ const searchData = [
 ];
 
 const search = (query) => {
-  const lowerQuery = query.toLowerCase();
+  if (!query || typeof query !== "string") return [];
+
+  const lowerQuery = query.toLowerCase().trim();
 
   return searchData.filter((item) => {
     const titleMatch = item.title.toLowerCase().includes(lowerQuery);
-    const tagsMatch = item.tags.some((tag) => tag.includes(lowerQuery));
+    const tagsMatch = item.tags.some((tag) =>
+      tag.toLowerCase().includes(lowerQuery),
+    );
     return titleMatch || tagsMatch;
   });
 };
 
-const suggestions = search("java");
-console.log("Znaleziono:", suggestions);
+const highlightResults = (results, query) => {
+  if (!query || typeof query !== "string") return results;
 
-const highlightResults = (results, query) =>
-  results.map((item) => ({
+  const highlightRegex = new RegExp(query, "gi");
+
+  return results.map((item) => ({
     ...item,
-    highlighted: item.title.replace(
-      new RegExp(query, "gi"),
-      (match) => `**${match}**`,
-    ),
+    highlighted: item.title.replace(highlightRegex, (match) => `**${match}**`),
   }));
+};
