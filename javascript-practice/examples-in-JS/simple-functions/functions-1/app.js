@@ -29,7 +29,7 @@ const products = [
 
 function filterAndSortProducts(products, minPrice) {
   const filteredProducts = products.filter(
-    (product) => product.price >= minPrice
+    (product) => product.price >= minPrice,
   );
 
   filteredProducts.sort((a, b) => a.price - b.price);
@@ -76,3 +76,20 @@ const groupedAndSortedProducts1 = groupAndSortProducts1(products1);
 console.log("Cheap products1:", groupedAndSortedProducts1.cheap);
 console.log("Moderate products1:", groupedAndSortedProducts1.moderate);
 console.log("Expensive products1:", groupedAndSortedProducts1.expensive);
+
+const numbers = [10, 20, 30, 40, 50];
+
+numbers.push(60);
+
+numbers.pop();
+
+const doubled = numbers.map((num) => num * 2);
+
+const filtered = numbers.filter((num) => num > 25);
+
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+
+console.log(numbers);
+console.log(doubled);
+console.log(filtered);
+console.log(sum);
