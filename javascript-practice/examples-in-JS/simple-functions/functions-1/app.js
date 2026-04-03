@@ -93,3 +93,17 @@ console.log(numbers);
 console.log(doubled);
 console.log(filtered);
 console.log(sum);
+
+const fruits = ["Apple", "Banana", "Cherry"];
+
+fruits.push("Date");
+
+fruits.pop();
+
+const uppercased = fruits.map((fruit) => fruit.toUpperCase());
+
+const filteredFruits = fruits.filter((fruit) => fruit.startsWith("B"));
+
+console.log(fruits);
+console.log(uppercased);
+console.log(filteredFruits);
