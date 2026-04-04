@@ -31,7 +31,7 @@ const productsSummary = products.map((product) => ({
   badge: product.price > 1000 ? "Premium" : "Standard",
 }));
 
-console.log("🛍️ Katalog produktów:");
+console.log("Katalog produktów:");
 console.table(productsSummary);
 
 const formattedProducts = products
@@ -41,3 +41,5 @@ const formattedProducts = products
     displayPrice: `${(product.price * 1.23).toFixed(2)} zł`,
     html: `<div class="product"><h3>${product.name}</h3><p>${(product.price * 1.23).toFixed(2)} zł</p></div>`,
   }));
+console.log("\n Produkty dostępne:");
+formattedProducts.forEach((p) => console.log(`${p.name}: ${p.displayPrice}`));
