@@ -1,18 +1,32 @@
-const numbers = [1, 2, 3, 4, 5];
-const squared = numbers.map((num) => num ** 4);
-console.log(squared);
+// Stałe
+const VAT_RATE = 1.23;
+const DISCOUNT_RATE = 0.1;
+const PRICE_PREMIUM_THRESHOLD = 1000;
+const DECIMAL_PLACES = 2;
 
-const numbers1 = [10, 20, 30, 40];
-const filtered = numbers1.filter((num) => num >= 30);
-console.log(filtered);
+// Funkcje pomocnicze
+const formatPrice = (price) => parseFloat((price * VAT_RATE).toFixed(DECIMAL_PLACES));
+const round = (num) => parseFloat(num.toFixed(DECIMAL_PLACES));
+const getPriceWithVAT = (price) => round(price * VAT_RATE);
+const getDiscount = (price) => round(price * DISCOUNT_RATE);
+const getFinalPrice = (price) => round(price * VAT_RATE * (1 - DISCOUNT_RATE));
 
-const numbersMap = [1, 2, 3, 4, 5, 6];
-const result = numbersMap
-  .filter((num) => num % 2 === 0)
-  .map((num) => num ** 10)
-  .reduce((acc, num) => acc + num, 0);
-console.log(result);
+// Przykłady map/filter/reduce
+console.log("Map - podniesienie do potęgi:");
+console.log([1, 2, 3, 4, 5].map((num) => num ** 4));
 
+console.log("\nFilter - liczby >= 30:");
+console.log([10, 20, 30, 40].filter((num) => num >= 30));
+
+console.log("\nChaining - suma parzystych liczb do potęgi 10:");
+console.log(
+  [1, 2, 3, 4, 5, 6]
+    .filter((num) => num % 2 === 0)
+    .map((num) => num ** 10)
+    .reduce((acc, num) => acc + num, 0)
+);
+
+// Dane produktów
 const products = [
   { id: 1, name: "Laptop", price: 5000, inStock: true },
   { id: 2, name: "Myszka", price: 150, inStock: false },
@@ -20,26 +34,30 @@ const products = [
   { id: 4, name: "Klawiatura", price: 450, inStock: true },
 ];
 
+// Podsumowanie produktów
 const productsSummary = products.map((product) => ({
   id: product.id,
   name: product.name,
   originalPrice: product.price,
-  priceWithVAT: parseFloat((product.price * 1.23).toFixed(2)),
-  discount: parseFloat((product.price * 0.1).toFixed(2)),
-  finalPrice: parseFloat((product.price * 1.23 * 0.9).toFixed(2)),
+  priceWithVAT: getPriceWithVAT(product.price),
+  discount: getDiscount(product.price),
+  finalPrice: getFinalPrice(product.price),
   status: product.inStock ? "Dostępny" : "Niedostępny",
-  badge: product.price > 1000 ? "Premium" : "Standard",
+  badge: product.price > PRICE_PREMIUM_THRESHOLD ? "Premium" : "Standard",
 }));
 
-console.log("Katalog produktów:");
+console.log("\nKatalog produktów:");
 console.table(productsSummary);
 
+// Produkty dostępne sformatowane
+const priceStr = (price) => `${formatPrice(price)} zł`;
 const formattedProducts = products
   .filter((p) => p.inStock)
   .map((product) => ({
     ...product,
-    displayPrice: `${(product.price * 1.23).toFixed(2)} zł`,
-    html: `<div class="product"><h3>${product.name}</h3><p>${(product.price * 1.23).toFixed(2)} zł</p></div>`,
+    displayPrice: priceStr(product.price),
+    html: `<div class="product"><h3>${product.name}</h3><p>${priceStr(product.price)}</p></div>`,
   }));
-console.log("\n Produkty dostępne:");
+
+console.log("\nProdukty dostępne:");
 formattedProducts.forEach((p) => console.log(`${p.name}: ${p.displayPrice}`));
