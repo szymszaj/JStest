@@ -1,17 +1,15 @@
-// Stałe
 const VAT_RATE = 1.23;
 const DISCOUNT_RATE = 0.1;
 const PRICE_PREMIUM_THRESHOLD = 1000;
 const DECIMAL_PLACES = 2;
 
-// Funkcje pomocnicze
-const formatPrice = (price) => parseFloat((price * VAT_RATE).toFixed(DECIMAL_PLACES));
+const formatPrice = (price) =>
+  parseFloat((price * VAT_RATE).toFixed(DECIMAL_PLACES));
 const round = (num) => parseFloat(num.toFixed(DECIMAL_PLACES));
 const getPriceWithVAT = (price) => round(price * VAT_RATE);
 const getDiscount = (price) => round(price * DISCOUNT_RATE);
 const getFinalPrice = (price) => round(price * VAT_RATE * (1 - DISCOUNT_RATE));
 
-// Przykłady map/filter/reduce
 console.log("Map - podniesienie do potęgi:");
 console.log([1, 2, 3, 4, 5].map((num) => num ** 4));
 
@@ -23,10 +21,9 @@ console.log(
   [1, 2, 3, 4, 5, 6]
     .filter((num) => num % 2 === 0)
     .map((num) => num ** 10)
-    .reduce((acc, num) => acc + num, 0)
+    .reduce((acc, num) => acc + num, 0),
 );
 
-// Dane produktów
 const products = [
   { id: 1, name: "Laptop", price: 5000, inStock: true },
   { id: 2, name: "Myszka", price: 150, inStock: false },
@@ -34,7 +31,6 @@ const products = [
   { id: 4, name: "Klawiatura", price: 450, inStock: true },
 ];
 
-// Podsumowanie produktów
 const productsSummary = products.map((product) => ({
   id: product.id,
   name: product.name,
