@@ -34,3 +34,15 @@ function checkAge(age) {
 
 console.log(checkAge(22));
 console.log(checkAge(15));
+
+let hour = 10;
+
+if (hour < 12) {
+  if (hour < 6) {
+    console.log("Jeszcze noc.");
+  } else {
+    console.log("Poranek.");
+  }
+} else {
+  console.log("Popołudnie lub wieczór.");
+}
