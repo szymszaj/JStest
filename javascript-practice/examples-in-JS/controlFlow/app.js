@@ -24,7 +24,6 @@ switch (day) {
     console.log("Zwykły dzień.");
 }
 
-// Przykład 3: if/else z funkcją
 function checkAge(age) {
   if (age >= 18) {
     return "Jesteś pełnoletni.";
