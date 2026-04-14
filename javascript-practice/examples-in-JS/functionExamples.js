@@ -106,3 +106,41 @@ const fibonacci = memoize((n) => {
 
 console.log(fibonacci(5));
 console.log(fibonacci(5));
+
+function apply(func, args) {
+  return func(...args);
+}
+
+console.log(apply(add, [10, 20]));
+
+const pipe =
+  (...fns) =>
+  (x) =>
+    fns.reduce((acc, fn) => fn(acc), x);
+
+const addFive = (x) => x + 5;
+const multiplyByTwo = (x) => x * 2;
+const subtractThree = (x) => x - 3;
+
+const pipedFunction = pipe(addFive, multiplyByTwo, subtractThree);
+console.log(pipedFunction(10));
+
+function once(func) {
+  let called = false;
+  let result;
+  return function (...args) {
+    if (!called) {
+      result = func(...args);
+      called = true;
+    }
+    return result;
+  };
+}
+
+const initializeApp = once(() => {
+  console.log("Aplikacja zainicjowana");
+  return true;
+});
+
+initializeApp();
+initializeApp();
