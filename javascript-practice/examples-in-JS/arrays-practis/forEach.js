@@ -10,3 +10,9 @@ const users = [
 users.forEach((user) => {
   console.log(`${user.name} ma ${user.age} lat`);
 });
+
+const fruits = ["jabłko", "banana", "pomarańcza", "winogrono"];
+
+fruits.forEach((fruit, index) => {
+  console.log(`${index + 1}. ${fruit.toUpperCase()}`);
+});
