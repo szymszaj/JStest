@@ -17,3 +17,8 @@ const IdNmubers = [
 
 const names = IdNmubers.map((u) => u.name);
 console.log(names);
+
+const IdNmubers2 = IdNmubers.sort((a, b) => a.name.localeCompare(b.name)).map(
+  (u) => u.name,
+);
+console.log(IdNmubers2);
