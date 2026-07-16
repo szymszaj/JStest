@@ -38,3 +38,20 @@ console.log(
     2,
   ),
 );
+
+const handleOrderWithCallback = (product, sell = 0, callback) => {
+  const sum = product.reduce((acc, p) => acc + p.price * p.quantity, 0);
+  return callback(sum - sell);
+};
+
+console.log(
+  "Total Order with Callback:",
+  handleOrderWithCallback(
+    [
+      { price: 10, quantity: 2 },
+      { price: 5, quantity: 3 },
+    ],
+    5,
+    (total) => total - 2,
+  ),
+);
