@@ -9,3 +9,9 @@ const people = [
 const resulte = people.filter((x) => x.age > 30).map((x) => x.name);
 
 console.log(resulte);
+
+const filteredNames = people
+  .filter((person) => person.age > 30)
+  .map((person) => person.name);
+
+console.log(filteredNames);
